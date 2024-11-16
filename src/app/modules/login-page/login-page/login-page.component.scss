@@ -1,0 +1,34 @@
+.login-page {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    position: relative;
+  }
+  
+  .background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1; /* Place background image behind content */
+  }
+  
+  .sticky-header {
+    position: sticky;
+    top: 0;
+    z-index: 10; /* Ensure header stays on top */
+  }
+  
+  .card-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-grow: 1; /* Take up remaining space */
+  }
+  
+  .mat-card {
+    max-width: 400px; /* Optional: Set a maximum width */
+    width: 100%;
+  }
