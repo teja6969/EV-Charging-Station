@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
@@ -9,6 +9,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 export class LoginPageComponent implements OnInit {
 
   loginForm!: FormGroup;
+  showUserLogin = false;
+  showvendorLogin = false;
 
   constructor(private fb: FormBuilder) {}
 
@@ -17,6 +19,27 @@ export class LoginPageComponent implements OnInit {
       username: ['', Validators.required],
       password: ['', Validators.required]
     });
+  }
+
+  hide = signal(true);
+  
+  clickEvent(event: MouseEvent) {
+    this.hide.set(!this.hide());
+    event.stopPropagation();
+  }
+
+  showLoginType(type: string) {
+    if(type == 'user') {
+      this.showUserLogin = true;
+      this.showvendorLogin = false;
+    } 
+    
+    if(type == 'vendor') {
+      this.showvendorLogin = true;
+      this.showUserLogin = false;
+    }
+
+
   }
 
   login() {
