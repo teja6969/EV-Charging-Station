@@ -1,24 +1,88 @@
-<div class="login-page">
-    <div class="card-container">
-      <mat-card>
-        <mat-card-header>
-          <mat-card-title>Login</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <form [formGroup]="loginForm">
-            <mat-form-field>
-              <input matInput type="text" placeholder="Username" formControlName="username">
-            </mat-form-field>
-  
-            <mat-form-field>
-              <input matInput type="password" placeholder="Password" formControlName="password">
-              <mat-icon matSuffix>visibility</mat-icon>
-            </mat-form-field>
-          </form>
-        </mat-card-content>
-        <mat-card-actions>
-          <button mat-raised-button color="primary" (click)="login()">Login</button>
-        </mat-card-actions>
-      </mat-card>
+<div class="login-container">
+  <div class="login-image-wrapper">
+    <div class="back-color">
+      <img class="logo-image" src="assets/logo_1.png" alt="Logo Image">
+      <span class="logo-title">Charge EV</span>
     </div>
+    <div class="side-image"></div>
+    <img class="login-image" src="assets/car.png" alt="Login Image">
   </div>
+
+  <div class="login-form-wrapper">
+    @if (!showUserLogin && !showvendorLogin) {
+      <div class="title-container">
+        <span>Select Credential Type</span>
+      </div>
+      <div class="buttons">
+        <button mat-raised-button class="user-button" (click)="showLoginType('user')">User</button>
+        <button mat-raised-button class="ev-button" (click)="showLoginType('vendor')">EV Vendor</button>
+      </div>
+    }
+
+    @if (showUserLogin && !showvendorLogin) {
+      <div class="title-container">
+        <span>Enter User Details</span>
+      </div>
+      <div class="form-grid">
+        <form [formGroup]="loginForm">
+          <div class="username">
+            <mat-form-field style="width: 85%; height: 36px;">
+              <mat-label>Username</mat-label>
+              <input matInput type="text" placeholder="Enter Username" formControlName="username">
+            </mat-form-field>
+          </div>
+          <div class="password">
+            <mat-form-field style="width: 85%; height: 36px;">
+              <mat-label>Password</mat-label>
+              <input matInput [type]="hide() ? 'password' : 'text'" placeholder="Enter User Password" formControlName="password" />
+              <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+                <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+
+          <div class="login-buttons">
+            <button mat-raised-button class="user-login" color="primary" (click)="login()">Login</button>
+          </div>
+
+          <div class="vendor-link">
+           <span class="vendor" (click)="showLoginType('vendor')">Want to login as Vendor ?</span>
+          </div>
+        </form>
+      </div>
+    }
+
+    @if (!showUserLogin && showvendorLogin) {
+      <div class="title-container">
+        <span>Enter Vendor Details</span>
+      </div>
+      <div class="form-grid">
+        <form [formGroup]="loginForm">
+          <div class="username">
+            <mat-form-field style="width: 85%; height: 36px;">
+              <mat-label>Username</mat-label>
+              <input matInput type="text" placeholder="Enter Vendor Username" formControlName="username">
+            </mat-form-field>
+          </div>
+          <div class="password">
+            <mat-form-field style="width: 85%; height: 36px;">
+              <mat-label>Password</mat-label>
+              <input matInput [type]="hide() ? 'password' : 'text'" placeholder="Enter Vendor Password" formControlName="password" />
+              <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+                <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+
+          <div class="login-buttons">
+            <button mat-raised-button class="vendor-login" color="primary" (click)="login()">Login</button>
+          </div>
+
+          <div class="user-link">
+           <span class="vendor" (click)="showLoginType('user')">Want to login as User ?</span>
+          </div>
+        </form>
+      </div>
+    }
+  </div>
+</div> 
