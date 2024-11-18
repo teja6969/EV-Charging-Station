@@ -8,6 +8,8 @@ import { LoginPageComponent } from './modules/login-page/login-page/login-page.c
 import { MaterialModule } from './material.module';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
+import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,8 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    CommonModule,
+    HttpClientModule,
     AppRoutingModule,
     MaterialModule
   ],

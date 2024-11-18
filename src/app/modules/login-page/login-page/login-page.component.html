@@ -40,6 +40,11 @@
               </button>
             </mat-form-field>
           </div>
+          @if (invalidCredentials) {
+            <div class="invalid-cred">
+              <mat-error class="error-msg">Invalid Credentials</mat-error>
+            </div>
+          }
 
           <div class="login-buttons">
             <button mat-raised-button class="user-login" color="primary" (click)="login()">Login</button>
@@ -73,6 +78,12 @@
               </button>
             </mat-form-field>
           </div>
+
+          @if (invalidCredentials) {
+            <div class="invalid-cred">
+              <mat-error class="error-msg">Invalid Credentials</mat-error>
+            </div>
+          }
 
           <div class="login-buttons">
             <button mat-raised-button class="vendor-login" color="primary" (click)="login()">Login</button>

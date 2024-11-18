@@ -78,6 +78,19 @@
   justify-content: center;
 }
 
+.invalid-cred {
+  grid-area: invalid-cred;
+  display: flex;
+  justify-content: center; 
+  font-weight: 400;
+  margin-top: 25px;
+  margin-bottom: 25px;
+
+  .error-msg {
+    color: red !important;
+  }
+}
+
 .login-buttons {
   grid-area: login-buttons;
   display: flex;

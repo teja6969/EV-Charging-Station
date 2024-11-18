@@ -1,5 +1,8 @@
 import { Component, OnInit, signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { User, UserResponse } from '../../../models/user';
+import { SharedService } from '../../../services/shared.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-login-page',
@@ -11,8 +14,9 @@ export class LoginPageComponent implements OnInit {
   loginForm!: FormGroup;
   showUserLogin = false;
   showvendorLogin = false;
+  invalidCredentials = false;
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private sharedService: SharedService) {}
 
   ngOnInit() {
     this.loginForm = this.fb.group({
@@ -29,6 +33,8 @@ export class LoginPageComponent implements OnInit {
   }
 
   showLoginType(type: string) {
+    this.invalidCredentials = false;
+    this.loginForm.markAsUntouched();
     if(type == 'user') {
       this.showUserLogin = true;
       this.showvendorLogin = false;
@@ -42,6 +48,32 @@ export class LoginPageComponent implements OnInit {
 
   }
 
-  login() {
+  clearForm() {
+    this.loginForm.controls['username'].patchValue('');
+    this.loginForm.controls['password'].patchValue('');
+    if(this.invalidCredentials) {
+      this.loginForm.markAllAsTouched();
+    }
+  }
+
+  login(): void {
+    const body = new User();
+    body.username = this.loginForm.controls['username'].value;
+    body.password = this.loginForm.controls['password'].value;
+
+
+    this.sharedService.userLogin(body).subscribe({
+      next: (data: UserResponse) => {
+        this.invalidCredentials = false;
+        this.sharedService.loggedInUser = data;
+        this.sharedService.isUserLoggedIn = true;
+
+        console.log(data);
+      }, error: (error: HttpErrorResponse) => {
+        this.invalidCredentials = true;
+        this.clearForm();
+      } 
+    });
+
   }
 }
