@@ -1,0 +1,34 @@
+<mat-toolbar class="toolbar">
+    <img class="logo-image" src="assets/logo_1.png" alt="Logo Image">
+    <span class="logo-title">Charge EV</span>
+    <span class="example-spacer"></span>
+    <span class="logo-title">{{this.sharedService.loggedInUser.username}}</span>
+    <button mat-icon-button class="account-icon">
+      <mat-icon>account_circle</mat-icon>
+    </button>
+</mat-toolbar>
+
+<div class="banner-grid">
+    <div class="banner-img">
+        <img class="img-banner" src="assets/ev-banner-1.png" alt="Logo Image">
+    </div>
+    <div class="banner-content">
+        <span class="banner-title">Elevate Your EV Business</span>
+        <span class="banner-subtitle">Maximize Your Charging Station's Potential</span>
+    </div>
+</div>
+
+<div class="section-header-grid">
+    <div class="section-content">
+        <span class="section-title">Vendor Information</span>
+        <span class="section-subtitle">Provide Location and Charging Station Details</span>
+    </div>
+</div>
+
+<div class="section-body-grid">
+    <div class="maps-content">
+        <google-maps-component></google-maps-component>
+    </div>
+    <div class="form-content">
+    </div>
+</div>

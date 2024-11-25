@@ -59,7 +59,11 @@
   grid-template-areas: 
   "username"
   "password"
+  "email"
+  "phone"
+  "role"
   "login-buttons"
+  "create-new-link"
   "vendor-link"
   "user-link";
 }
@@ -73,6 +77,27 @@
 
 .password {
   grid-area: password;
+  margin: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.email {
+  grid-area: email;
+  margin: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.phone {
+  grid-area: phone;
+  margin: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+.role {
+  grid-area: role;
   margin: 5%;
   display: flex;
   justify-content: center;
@@ -101,6 +126,7 @@
     width: 30%;
     padding: 5px;
     background-color: #A5DF5A !important;
+    font-family: Poppins, sans-serif !important;
     color: black !important;
     font-size: 15px;
     font-weight: bold;
@@ -117,15 +143,36 @@
     width: 30%;
     padding: 5px;
     background-color: black !important;
+    font-family: Poppins, sans-serif !important;
+    color: white !important;
     font-size: 15px;
     font-weight: bold;
     border-radius: 3rem;
   }
   
   .vendor-login:hover {
-    color: white !important;
     background-color: #A5DF5A !important;
     color: black !important;
+  }
+
+  .vendor-login:disabled {
+    background-color: #d8d8d8 !important;
+    color: gray !important;
+  }
+}
+
+.create-new-link {
+  grid-area: create-new-link;
+  display: flex;
+  font-weight: 400;
+  justify-content: center; 
+  margin-top: 45px;
+
+  .user {
+    font-weight: 9s00;
+    color: #A5DF5A !important;
+    cursor: pointer;
+    text-decoration: underline;
   }
 }
 
@@ -168,6 +215,7 @@
     padding: 5px;
     margin-right: 15px;
     background-color: #A5DF5A !important;
+    font-family: Poppins, sans-serif !important;
     color: black !important;
     font-size: 15px;
     font-weight: bold;
@@ -184,6 +232,7 @@
     width: 30%;
     padding: 5px;
     background-color: black !important;
+    font-family: Poppins, sans-serif !important;
     color: white !important;
     font-size: 15px;
     font-weight: bold;
@@ -202,4 +251,58 @@
   top: 18%;
   left: 3%;
   z-index: 10;
+}
+
+
+//Alerts 
+
+.alerts {
+  grid-area: alerts;
+}
+
+.alert-container {
+  display: flex;
+  gap: 10px;
+  margin: 20px;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+}
+
+.alert {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 15px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.alert .icon {
+  margin-right: 10px;
+  font-size: 16px;
+}
+
+.alert .message {
+  flex: 1;
+}
+
+.alert .close {
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.alert-success {
+  background-color: #e6f9f0;
+  color: #27a960;
+  border: 1px solid #27a960;
+  font-family: Poppins, sans-serif !important;
+}
+
+.alert-error {
+  background-color: #fcebea;
+  color: #f44336;
+  font-family: Poppins, sans-serif !important;
+  border: 1px solid #f44336;
 }
