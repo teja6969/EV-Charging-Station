@@ -1,0 +1,122 @@
+.toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 1;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+}
+
+.logo-title {
+    font-size: 15px;
+    font-weight: 600;
+    padding-top: 0%;
+    position: relative;
+    margin-left: 1%;
+}
+
+.logo-image {
+    height: 30px;
+    padding: 1.5rem 0.2rem 1.5rem 1.5rem;
+}
+
+.account-icon {
+    margin-right: 1.5%;
+}
+
+.banner-grid {
+    background-color: #A5DF5A;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    min-height: 27.5vh;
+    grid-template-areas: "banner-img banner-content";
+
+    .banner-img {
+        grid-area: banner-img;
+
+        .img-banner {
+            position: absolute;
+            left: 7%;
+            width: 30vw;
+        }
+    }
+
+    .banner-content {
+        grid-area: banner-content;
+        margin-top: 10%;
+        margin-left: -15%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "banner-title" 
+        "banner-subtitle";
+
+        .banner-title {
+            grid-area: banner-title;
+            font-size: 45px;
+            font-family: Poppins, sans-serif !important;
+            font-weight: bolder;
+        }
+
+        .banner-subtitle {
+            grid-area: banner-subtitle;
+            margin-bottom: 3%;
+            font-size: 15px;
+            font-family: Poppins, sans-serif !important;
+            font-weight: 600
+        }
+    }
+}
+
+.section-header-grid {
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 10vh;
+
+    .section-content {
+        grid-area: section-content;
+        margin-left: 10%;
+        margin-top: 2.5%;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-areas: 
+        "section-title" 
+        "section-subtitle";
+
+        .section-title {
+            grid-area: section-title;
+            font-size: 24px;
+            font-family: Poppins, sans-serif !important;
+            font-weight: bolder;
+        }
+
+        .section-subtitle {
+            grid-area: section-subtitle;
+            margin-top: 3%;
+            margin-left: -10%;
+            font-size: 13px;
+            font-family: Poppins, sans-serif !important;
+            font-weight: 400
+        }
+    }
+}
+
+.section-body-grid {
+    display: grid;
+    margin-top: 5%;
+    grid-template-columns: 1fr 1fr;
+    min-height: 27.5vh;
+    grid-template-areas: "maps-content form-content";
+
+    .maps-content {
+        grid-area: maps-content;
+
+    }
+    .form-content {
+        grid-area: maps-content;
+    }
+}

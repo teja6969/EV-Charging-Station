@@ -13,5 +13,14 @@ export class UserResponse {
     password!: string;
     email!: string;
     role!: string;
+    phone!: string;
     createdAt!: string;
+}
+
+export class RegisterUser {
+    username!: string;
+    password!: string;
+    email!: string;
+    role!: string;
+    phone!: string;
 }

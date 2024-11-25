@@ -1,5 +1,5 @@
  import { Injectable } from '@angular/core';
-import { User, UserResponse } from '../models/user';
+import { RegisterUser, User, UserResponse } from '../models/user';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { endpoints } from '../endpoints';
@@ -20,5 +20,9 @@ export class SharedService {
 
   userLogin(request: User) {
     return this.http.post<UserResponse>(endpoints.login, request, this.httpOptions);
+  }
+
+  registerUser(request: RegisterUser) {
+    return this.http.post<string>(endpoints.register, request, this.httpOptions);
   }
 }
