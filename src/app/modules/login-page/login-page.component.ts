@@ -28,7 +28,7 @@ export class LoginPageComponent implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      username: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
 
@@ -73,7 +73,7 @@ export class LoginPageComponent implements OnInit {
   }
 
   clearForm() {
-    this.loginForm.controls['username'].patchValue('');
+    this.loginForm.controls['email'].patchValue('');
     this.loginForm.controls['password'].patchValue('');
     if(this.invalidCredentials) {
       this.loginForm.markAllAsTouched();
@@ -82,7 +82,7 @@ export class LoginPageComponent implements OnInit {
 
   login(): void {
     const body = new User();
-    body.username = this.loginForm.controls['username'].value;
+    body.email = this.loginForm.controls['email'].value;
     body.password = this.loginForm.controls['password'].value;
 
 
@@ -116,7 +116,6 @@ export class LoginPageComponent implements OnInit {
         this.failureAlert = false;
         this.successMsg = 'Registration Successful';
         this.failureMsg = '';
-        console.log(data);
       }, error: (error: HttpErrorResponse) => {
         this.successAlert = false;
         this.failureAlert = true;

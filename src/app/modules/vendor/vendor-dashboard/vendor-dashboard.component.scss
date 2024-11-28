@@ -1,0 +1,129 @@
+@import '../../../variable.scss';
+
+.dashboard-container {
+    padding: 20px;
+  
+    .dashboard-heading {
+      font-size: 24px;
+      font-weight: bold;
+      font-family: $font;
+      margin-bottom: 20px;
+    }
+
+    .dashboard-sub-heading {
+        font-size: 18px;
+        font-weight: bold;
+        font-family: $font;
+        margin-bottom: 20px;
+      }
+  
+    .card-container {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+  
+      .dashboard-card {
+        flex: 1;
+
+        .card {
+            padding: 10% 0% 10% 0%;
+          }
+    
+          .card-title {
+            font-size: 14px !important;
+            font-family: Poppins, sans-serif;
+            margin-left: 5%;
+          }
+    
+          .card-content {
+            font-size: 4rem !important;
+            margin-top: 6%;
+            font-weight: bolder;
+            font-family: $font;
+          }
+      }
+
+      .blue {
+        background: linear-gradient(171.12deg, #007bff, #002bff) !important;
+        color: white !important;
+      }
+
+      .green {
+        background: $background !important;
+        color: white !important;
+      }
+
+      .red {
+        background: linear-gradient(171.12deg, #ff0000, #990000) !important;
+        color: white !important;
+      }
+
+    }
+  
+}
+
+.chart-box-container {
+    display: flex;
+    gap: 20px;
+}
+
+
+.chart-container {
+  margin-top: 40px;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  width: 63%;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+
+  .chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+  }
+
+  // Button toggle styles
+  mat-button-toggle-group {
+    display: flex;
+    border: none !important;
+
+    mat-button-toggle {
+      border-radius: 36px;
+      border: 1px solid #11998e !important;
+      background: white !important;
+      color: #11998e !important;
+      font-family: $font;
+      font-weight: 500;
+      margin: 0 5px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+
+      &.mat-button-toggle-checked {
+        background: $background !important;
+        color: white !important;
+        border-color: #11998e !important;
+      }
+    }
+  }
+}
+
+.recent-bookings {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    width: 35%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+
+    .content {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 16px;
+        height: 100%;
+        font-family: $font !important;
+        color: lightgray;
+    }
+}
+
+  

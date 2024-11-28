@@ -10,10 +10,11 @@ import { MAT_FORM_FIELD_DEFAULT_OPTIONS } from '@angular/material/form-field';
 import { CommonModule } from '@angular/common';
 import { HttpClientModule } from '@angular/common/http';
 import { LoginPageComponent } from './modules/login-page/login-page.component';
-import { VendorLandingPageComponent } from './modules/vendor-landing-page/vendor-landing-page.component';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { GoogleMapsComponent } from './components/google-maps/google-maps.component';
-import { VendorHomePageComponent } from './modules/vendor-home-page/vendor-home-page.component';
+import { VendorHomePageComponent } from './modules/vendor/vendor-home-page/vendor-home-page.component';
+import { VendorDashboardComponent } from './modules/vendor/vendor-dashboard/vendor-dashboard.component';
+import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2-charts';
 
 @NgModule({
   declarations: [
@@ -21,10 +22,11 @@ import { VendorHomePageComponent } from './modules/vendor-home-page/vendor-home-
     GoogleMapsComponent,
     LoginPageComponent,
     VendorHomePageComponent,
-    VendorLandingPageComponent,
+    VendorDashboardComponent
   ],
   imports: [
     BrowserModule,
+    BaseChartDirective,
     ReactiveFormsModule,
     CommonModule,
     GoogleMapsModule,
@@ -34,7 +36,8 @@ import { VendorHomePageComponent } from './modules/vendor-home-page/vendor-home-
   ],
   providers: [
     {provide: MAT_FORM_FIELD_DEFAULT_OPTIONS, useValue: {appearance: 'outline'}},
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideCharts(withDefaultRegisterables()),
   ],
   bootstrap: [AppComponent]
 })
