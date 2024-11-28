@@ -18,6 +18,11 @@ export class SharedService {
 
   constructor(private http: HttpClient) { }
 
+  clearLoggedInUser() {
+    this.isUserLoggedIn = false;
+    this.loggedInUser = new UserResponse();
+  }
+
   userLogin(request: User) {
     return this.http.post<UserResponse>(endpoints.login, request, this.httpOptions);
   }

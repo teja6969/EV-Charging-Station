@@ -1,3 +1,5 @@
+@import '../../variable.scss';
+
 .login-container {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -16,7 +18,7 @@
   .back-color {
     grid-area: back-color;
     display: flex;
-    background-color: #A5DF5A;
+    background: $background;
 
     .logo-title {
       font-size: 18px;
@@ -125,8 +127,8 @@
     height: 45px;
     width: 30%;
     padding: 5px;
-    background-color: #A5DF5A !important;
-    font-family: Poppins, sans-serif !important;
+    background: $background !important;
+    font-family: $font !important;
     color: black !important;
     font-size: 15px;
     font-weight: bold;
@@ -134,7 +136,7 @@
   }
   
   .user-login:hover {
-    background-color: black !important;
+    background: black !important;
     color: white !important;
   }
 
@@ -142,8 +144,8 @@
     height: 45px;
     width: 30%;
     padding: 5px;
-    background-color: black !important;
-    font-family: Poppins, sans-serif !important;
+    background: black !important;
+    font-family: $font !important;
     color: white !important;
     font-size: 15px;
     font-weight: bold;
@@ -151,12 +153,12 @@
   }
   
   .vendor-login:hover {
-    background-color: #A5DF5A !important;
+    background: $background !important;
     color: black !important;
   }
 
   .vendor-login:disabled {
-    background-color: #d8d8d8 !important;
+    background: #d8d8d8 !important;
     color: gray !important;
   }
 }
@@ -170,7 +172,7 @@
 
   .user {
     font-weight: 9s00;
-    color: #A5DF5A !important;
+    color: $background !important;
     cursor: pointer;
     text-decoration: underline;
   }
@@ -194,7 +196,7 @@
   display: flex;
   justify-content: center; 
   font-weight: 600;
-  color: #A5DF5A !important;
+  color: $background !important;
   cursor: pointer;
   margin-top: 25px;
 }
@@ -214,8 +216,8 @@
     width: 30%;
     padding: 5px;
     margin-right: 15px;
-    background-color: #A5DF5A !important;
-    font-family: Poppins, sans-serif !important;
+    background: $background !important;
+    font-family: $font !important;
     color: black !important;
     font-size: 15px;
     font-weight: bold;
@@ -223,7 +225,7 @@
   }
   
   .user-button:hover {
-    background-color: black !important;
+    background: black !important;
     color: white !important;
   }
   
@@ -231,8 +233,8 @@
     height: 45px;
     width: 30%;
     padding: 5px;
-    background-color: black !important;
-    font-family: Poppins, sans-serif !important;
+    background: black !important;
+    font-family: $font !important;
     color: white !important;
     font-size: 15px;
     font-weight: bold;
@@ -241,7 +243,7 @@
   
   .ev-button:hover {
     color: black !important;
-    background-color: #A5DF5A !important;
+    background: $background !important;
   }
 }
 
@@ -297,12 +299,20 @@
   background-color: #e6f9f0;
   color: #27a960;
   border: 1px solid #27a960;
-  font-family: Poppins, sans-serif !important;
+  font-family: $font !important;
 }
 
 .alert-error {
   background-color: #fcebea;
   color: #f44336;
-  font-family: Poppins, sans-serif !important;
+  font-family: $font !important;
   border: 1px solid #f44336;
+}
+
+mat-label {
+  font-family: $font !important;
+}
+
+input {
+  font-family: $font !important;
 }
