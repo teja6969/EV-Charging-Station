@@ -1,0 +1,6 @@
+<google-map height="450px" width="450px" [center]="center" [zoom]="zoom" (mapClick)="dropMarker($event)" (mapMousemove)="move($event)">
+    <map-marker [position]="center" [title]="ChargingStationName"></map-marker>
+</google-map>
+
+<div>Latitude: {{display?.lat}}</div>
+<div>Longitude: {{display?.lng}}</div>

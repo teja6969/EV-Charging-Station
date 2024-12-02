@@ -1,0 +1,252 @@
+@import '../../../variable.scss';
+
+.station-container {
+  padding: 20px;
+
+  .main-heading {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: $font;
+    margin-bottom: 20px;
+  }
+
+  .form-container {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .vendor-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "vendorName"
+      "stationName"
+      "landmark"
+      "city"
+      "state"
+      "zip"
+      "submit";
+  }
+
+  .vendorName {
+    grid-area: vendorName;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 55%;
+  }
+
+  .stationName {
+    grid-area: stationName;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 55%;
+  }
+
+  .landmark {
+    grid-area: landmark;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 55%;
+  }
+
+  .city {
+    grid-area: city;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 55%;
+  }
+
+  .state {
+    grid-area: state;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 55%;
+  }
+
+  .zip {
+    grid-area: zip;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 55%;
+  }
+
+  .submit {
+    grid-area: submit;
+    display: grid;
+    margin: 1.5% 0% 1.5% 40%;
+    width: 15%;
+
+    .submit-button {
+      border-radius: 36px;
+      border: 2px solid #11998e !important;
+      background: white !important;
+      color: #11998e !important;
+      font-family: $font;
+      font-weight: 500;
+    }
+
+    .submit-button:hover {
+      border: 2px solid #11998e !important;
+      background: #11998e !important;
+      color: white !important;
+    }
+  }
+
+
+  .station-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "slots"
+      "capacity"
+      "vType"
+      "aType"
+      "done";
+  }
+
+  .slots {
+    grid-area: slots;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 55%;
+  }
+
+  .capacity {
+    grid-area: capacity;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 55%;
+  }
+
+  .vType {
+    grid-area: vType;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 55%;
+  }
+
+  .aType {
+    grid-area: aType;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 55%;
+  }
+
+  .done {
+    grid-area: submit;
+    display: grid;
+    margin: 1.5% 0% 1.5% 40%;
+    width: 15%;
+
+    .done-button {
+      border-radius: 36px;
+      border: 2px solid #11998e !important;
+      background: white !important;
+      color: #11998e !important;
+      font-family: $font;
+      font-weight: 500;
+    }
+
+    .done-button:hover {
+      border: 2px solid #11998e !important;
+      background: #11998e !important;
+      color: white !important;
+    }
+  }
+
+
+  .location-form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "google-map-wrapper side-form-wrapper";
+
+    .google-map-wrapper {
+      grid-area: google-map-wrapper;
+      display: grid;
+    }
+
+    .side-form-wrapper {
+      grid-template-columns: 1fr;
+      grid-area: side-form-wrapper;
+      grid-template-areas: 
+      "select-location-heading"
+      "select-location-sub-heading"
+      "latitude"
+      "longitude";
+
+      .select-location-heading {
+        grid-area: select-location-heading;
+        display: grid;
+        font-size: 18px;
+        font-weight: bold;
+        font-family: $font;
+        margin-bottom: 5px;
+      }
+
+      .select-location-sub-heading {
+        grid-area: select-location-sub-heading;
+        display: grid;
+        font-size: 14px;
+        font-weight: 600;
+        font-family: $font;
+        margin-bottom: 25px;
+      }
+
+      .latitude {
+        grid-area: latitude;
+        display: grid;
+      }
+
+      .longitude {
+        grid-area: longitude;
+        display: grid;
+      }
+
+      .save {
+        margin: 1.5% 0% 1.5% 0%;
+
+        .reset-button {
+          border-radius: 36px;
+          margin-right: 70%;
+          border: 2px solid #11998e !important;
+          background: white !important;
+          color: #11998e !important;
+          font-family: $font;
+          font-weight: 500;
+          width: 15%;
+        }
+    
+        .reset-button:hover {
+          border: 2px solid #11998e !important;
+          background: #11998e !important;
+          color: white !important;
+        }
+  
+  
+        .save-button {
+          border-radius: 36px;
+          border: 2px solid #11998e !important;
+          background: #11998e !important;
+          color: white !important;
+          font-family: $font;
+          font-weight: 500;
+          width: 15%;
+          transition: left 0.3 ease-out;
+        }
+    
+        .save-button:hover {
+          border: 2px solid #11998e !important;
+          background: white !important;
+          color: #11998e !important;
+        }
+      }
+
+
+    }
+  }
+
+
+}

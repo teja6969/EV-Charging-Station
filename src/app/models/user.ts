@@ -13,8 +13,10 @@ export class UserResponse {
     password!: string;
     email!: string;
     role!: string;
-    phone!: string;
+    phone!: number;
     createdAt!: string;
+    userId!: string;
+    id!: number;
 }
 
 export class RegisterUser {
