@@ -4,10 +4,46 @@
 
 html,
 body {
-    height: 100%;
+  height: 100%;
 }
 
 body {
-    margin: 0;
+  margin: 0;
+  font-family: Poppins, sans-serif !important;
+}
+
+mat-label {
+  font-family: Poppins, sans-serif !important;
+}
+
+mat-option {
+  font-family: Poppins, sans-serif !important;
+}
+
+mat-select {
+  font-family: Poppins, sans-serif !important;
+}
+
+mat-stepper {
+  .mat-step-icon-selected  {
+    background-color: #11998e !important;
+  }
+  .mat-step-icon-state-edit {
+    background-color: #11998e !important;
+  }
+  .mat-step-label {
     font-family: Poppins, sans-serif !important;
+  }
+  .mat-step-label.mat-step-label-selected  {
+    font-weight: 600 !important;
+  }
+}
+
+input {
+  font-family: Poppins, sans-serif !important;
+}
+
+::ng-deep .mdc-text-field--focused:not(.mdc-text-field--disabled) .mdc-floating-label {
+  color: #11998e !important;
+  color: var(--mdc-theme-primary, #11998e) !important;
 }

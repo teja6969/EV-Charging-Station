@@ -1,0 +1,135 @@
+<div class="station-container">
+    <h1 class="main-heading">Add Charging Station Details</h1>
+
+    <div class="form-container">
+        <mat-stepper labelPosition="bottom" #stepper [linear]="false">
+            <mat-step [stepControl]="vendorDetailsForm">
+                <div class="vendor-form-grid">
+                    <form [formGroup]="vendorDetailsForm">
+                        <ng-template matStepLabel>Vendor Details</ng-template>
+                        <div class="vendorName">
+                            <mat-form-field>
+                                <mat-label>Vendor Name</mat-label>
+                                <input matInput placeholder="Vendor Name" formControlName="vendorName" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="stationName">
+                            <mat-form-field>
+                                <mat-label>Name of EV Charging Station</mat-label>
+                                <input matInput placeholder="Station Name" formControlName="stationName" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="landmark">
+                            <mat-form-field>
+                                <mat-label>Landmark</mat-label>
+                                <input matInput formControlName="landmark" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="city">
+                            <mat-form-field>
+                                <mat-label>City</mat-label>
+                                <input matInput formControlName="city" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="state">
+                            <mat-form-field>
+                                <mat-label>State</mat-label>
+                                <mat-select formControlName="state">
+                                    <mat-option disabled value="">Please Select</mat-option>
+                                    @for (state of states; track state) {
+                                    <mat-option [value]="state">{{state}}</mat-option>
+                                    }
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="zip">
+                            <mat-form-field>
+                                <mat-label>Zip Code</mat-label>
+                                <input matInput formControlName="zipCode" required>
+                            </mat-form-field>
+                        </div>
+                        <div class="submit">
+                            <button class="submit-button" mat-button matStepperNext (click)="addStation()">Next</button>
+                        </div>
+                    </form>
+                </div>
+            </mat-step>
+            <mat-step [stepControl]="chargingStationDetailsForm">
+                <div class="station-form-grid">
+                    <form [formGroup]="chargingStationDetailsForm">
+                        <ng-template matStepLabel>Station Details</ng-template>
+                        <div class="slots">
+                            <mat-form-field>
+                                <mat-label>No of Charging Slots</mat-label>
+                                <input matInput type="number" formControlName="slots">
+                            </mat-form-field>
+                        </div>
+                        <div class="capacity">
+                            <mat-form-field>
+                                <mat-label>Max Charging Capacity</mat-label>
+                                <input matInput type="number" formControlName="capacity">
+                                <mat-hint align="start">Kwh</mat-hint>
+                            </mat-form-field>
+                        </div>
+                        <div class="vType">
+                            <mat-form-field>
+                                <mat-label>Vehical Type</mat-label>
+                                <mat-select formControlName="vehicleType">
+                                    <mat-option value="">Please Select</mat-option>
+                                    <mat-option value="2">2 Wheeler</mat-option>
+                                    <mat-option value="3">3 Wheeler</mat-option>
+                                    <mat-option value="4">4 Wheeler</mat-option>
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="aType">
+                            <mat-form-field>
+                                <mat-label>Adapter Type</mat-label>
+                                <mat-select formControlName="slotType" multiple>
+                                    @for (slot of slotTypes; track slot) {
+                                    <mat-option [value]="slot">{{slot}}</mat-option>
+                                    }
+                                </mat-select>
+                            </mat-form-field>
+                        </div>
+                        <div class="done">
+                            <button class="done-button" mat-button matStepperNext >Next</button>
+                        </div>
+                    </form>
+                </div>
+            </mat-step>
+            <mat-step>
+                <form [formGroup]="locationDetailsForm">
+                    <ng-template matStepLabel>Location details</ng-template>
+                    <div class="location-form-grid">
+                        <div class="google-map-wrapper">
+                            <google-maps-component [ChargingStationName]="selectedChargingStationName" (latitudeEvent)="latChange($event)" (longitudeEvent)="lngChange($event)"></google-maps-component>
+                        </div>
+                        <div class="side-form-wrapper">
+                            <h1 class="select-location-heading">Add Location</h1>
+                            <h3 class="select-location-sub-heading">You can select location from the map</h3>
+                            <div class="latitude">
+                                <mat-form-field>
+                                    <mat-label>Latitude</mat-label>
+                                    <input matInput type="number" formControlName="latitude">
+                                </mat-form-field>
+                            </div>
+                            <div class="longitude">
+                                <mat-form-field>
+                                    <mat-label>Longitude</mat-label>
+                                    <input matInput type="number" formControlName="longitude">
+                                </mat-form-field>
+                            </div>
+
+                            <div class="save">
+                                <button class="reset-button" mat-button (click)="stepper.reset()">Reset</button>
+                                <button class="save-button" mat-button matStepperNext (click)="submitVendor()">Save</button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </mat-step>
+        </mat-stepper>
+
+    </div>
+</div>

@@ -11,10 +11,18 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class VendorHomePageComponent implements AfterViewInit {
 
+  showDashboard = false;
+  showChargingStation = false;
+  showStations = false;
+  showHelp = false;
+  showConfirmationPage = false;
+
   @ViewChild(MatSidenav)
   sidenav!: MatSidenav;
 
-  constructor(public sharedService: SharedService, private observer: BreakpointObserver,private route: ActivatedRoute, private router: Router ) {}
+  constructor(public sharedService: SharedService, private observer: BreakpointObserver,private route: ActivatedRoute, private router: Router ) {
+    this.showDashboard = true;
+  }
 
   ngAfterViewInit(): void {
     this.observer.observe(['(max-width: 800px)']).subscribe((res)=> {
@@ -31,6 +39,38 @@ export class VendorHomePageComponent implements AfterViewInit {
   logout() {
     this.sharedService.clearLoggedInUser();
     this.router.navigateByUrl('');
+  }
+
+  pageChange(value: string) {
+    this.clearPageSelection();
+
+    if(value == 'Dashboard') {
+      this.showDashboard = true;
+    }
+    if(value == 'ChargingStation') {
+      this.showChargingStation = true;
+    }
+    if(value == 'ViewStation') {
+      this.showStations = true;
+    }
+    if(value == 'Help') {
+      this.showHelp = true;
+    }
+  }
+
+  clearPageSelection() {
+    this.showDashboard = false;
+    this.showChargingStation = false;
+    this.showStations = false;
+    this.showHelp = false;
+    this.showConfirmationPage = false;
+  }
+
+  getConfirmation(value: string) {
+    if(value == 'show') {
+      this.clearPageSelection();
+      this.showConfirmationPage = true;
+    }
   }
 
 }
