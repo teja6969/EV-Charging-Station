@@ -18,6 +18,7 @@ import { BaseChartDirective, provideCharts, withDefaultRegisterables } from 'ng2
 import { VendorChargingStationComponent } from './modules/vendor/vendor-charging-station/vendor-charging-station.component';
 import { ConfirmationPageComponent } from './components/vendor-maps/confirmation-page/confirmation-page.component';
 import { VendorViewChargingStationsComponent } from './modules/vendor/vendor-view-charging-stations/vendor-view-charging-stations.component';
+import { EditChargingStationComponent } from './modules/vendor/edit-charging-station/edit-charging-station.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { VendorViewChargingStationsComponent } from './modules/vendor/vendor-vie
     VendorHomePageComponent,
     VendorDashboardComponent,
     VendorChargingStationComponent,
-    VendorViewChargingStationsComponent
+    VendorViewChargingStationsComponent,
+    EditChargingStationComponent
   ],
   imports: [
     BrowserModule,

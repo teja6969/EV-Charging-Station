@@ -39,4 +39,8 @@ export class SharedService {
   retriveVendorDetails(): Observable<any> {
     return this.http.get<SaveVendorStation>(endpoints.retriveVendorDetails, this.httpOptions);
   }
+
+  updateVendorStationDetails(request: SaveVendorStation) {
+    return this.http.put<string>(endpoints.updateVendorDetails, request, this.httpOptions);
+  }
 }

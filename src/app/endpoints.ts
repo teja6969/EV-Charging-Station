@@ -6,4 +6,5 @@ export const endpoints = {
     register: `${gatewayBaseUrl}api/auth/registration`,
     saveVendorDetails: `${gatewayBaseUrl}api/auth/saveVendorStationDetails`,
     retriveVendorDetails: `${gatewayBaseUrl}api/auth/retriveVendorStationDetails`,
+    updateVendorDetails: `${gatewayBaseUrl}api/auth/updateVendorStationDetails`,
 }
