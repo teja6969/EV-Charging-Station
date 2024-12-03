@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { SharedService } from '../../../services/shared.service';
-import { RetriveVendor, SaveVendorStation } from '../../../models/vendor';
+import { SaveVendorStation } from '../../../models/vendor';
 import { HttpErrorResponse } from '@angular/common/http';
-import { RegisterUser } from '../../../models/user';
+import { MatDialog } from '@angular/material/dialog';
+import { EditChargingStationComponent } from '../edit-charging-station/edit-charging-station.component';
 
 @Component({
   selector: 'app-vendor-view-charging-stations',
@@ -11,17 +12,25 @@ import { RegisterUser } from '../../../models/user';
 })
 export class VendorViewChargingStationsComponent  implements OnInit {
 
-  constructor(private sharedService: SharedService) {}
+  stationDetails!: Array<SaveVendorStation>;
+
+  constructor(private sharedService: SharedService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
+    this.stationDetails = [];
     this.sharedService.retriveVendorDetails().subscribe({
       next: (response: any) => {
-        console.log(response);
+        this.stationDetails = response;
       }, error: (error: HttpErrorResponse)=> {
         console.error('error', error)
       }
-    })
-    
+    });
+  }
+
+  editDetails(vendor : SaveVendorStation): void {
+    const dialogRef = this.dialog.open(EditChargingStationComponent, {
+      data: {leadData : vendor}
+    });
   }
 
 }
