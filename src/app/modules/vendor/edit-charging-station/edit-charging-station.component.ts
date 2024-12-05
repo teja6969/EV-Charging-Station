@@ -2,12 +2,13 @@ import { Component, Inject, OnInit } from '@angular/core';
 import { ADAPTER_TYPES, STATE_LIST } from '../../../enums/states';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from '../../../services/shared.service';
-import { SaveVendorStation, SlotType } from '../../../models/vendor';
+import { EditVendorStation, SlotType } from '../../../models/vendor';
 import { HttpErrorResponse } from '@angular/common/http';
 import { MAT_DIALOG_DATA, MatDialogRef } from '@angular/material/dialog';
 
 interface DialogData {
-  leadData: SaveVendorStation;
+  leadData: EditVendorStation;
+
 }
 
 @Component({
@@ -22,7 +23,7 @@ export class EditChargingStationComponent implements OnInit {
   slotTypes = ADAPTER_TYPES;
 
   selectedChargingStationName = '';
-  RetriveDetailModel: SaveVendorStation = new SaveVendorStation();
+  RetriveDetailModel: EditVendorStation = new EditVendorStation();
   
 
   selectedLatitude = '';
@@ -47,8 +48,8 @@ export class EditChargingStationComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.sentData.leadData)
     this.retriveData(this.sentData.leadData);
+    this.RetriveDetailModel.stationID = this.sentData.leadData.stationID;
     this.initializeForm();
   }
 
@@ -75,7 +76,7 @@ export class EditChargingStationComponent implements OnInit {
     })
   }
 
-  retriveData(data: SaveVendorStation): void {
+  retriveData(data: EditVendorStation): void {
     this.RetriveDetailModel.vendorName = data.vendorName;
     this.RetriveDetailModel.stationName = data.stationName;
     this.RetriveDetailModel.landmark = data.landmark;
@@ -113,8 +114,9 @@ export class EditChargingStationComponent implements OnInit {
   }
 
   submitVendor(): void {
-    const body = new SaveVendorStation();
+    const body = new EditVendorStation();
     body.vendorid = this.sharedService.loggedInUser.userId;
+    body.stationID = this.RetriveDetailModel.stationID;
     body.vendorName = this.vendorDetailsForm.controls['vendorName'].value;
     body.stationName = this.vendorDetailsForm.controls['stationName'].value;
     body.landmark = this.vendorDetailsForm.controls['landmark'].value;
