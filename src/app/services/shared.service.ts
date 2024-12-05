@@ -3,7 +3,7 @@ import { RegisterUser, User, UserResponse } from '../models/user';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { endpoints } from '../endpoints';
-import { RetriveVendor, SaveVendorStation } from '../models/vendor';
+import { EditVendorStation, RetriveVendor, SaveVendorStation } from '../models/vendor';
 
 @Injectable({
   providedIn: 'root'
@@ -37,10 +37,10 @@ export class SharedService {
   }
 
   retriveVendorDetails(): Observable<any> {
-    return this.http.get<SaveVendorStation>(endpoints.retriveVendorDetails, this.httpOptions);
+    return this.http.get<EditVendorStation>(endpoints.retriveVendorDetails, this.httpOptions);
   }
 
-  updateVendorStationDetails(request: SaveVendorStation) {
+  updateVendorStationDetails(request: EditVendorStation) {
     return this.http.put<string>(endpoints.updateVendorDetails, request, this.httpOptions);
   }
 }
