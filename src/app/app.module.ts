@@ -19,6 +19,8 @@ import { VendorChargingStationComponent } from './modules/vendor/vendor-charging
 import { ConfirmationPageComponent } from './components/vendor-maps/confirmation-page/confirmation-page.component';
 import { VendorViewChargingStationsComponent } from './modules/vendor/vendor-view-charging-stations/vendor-view-charging-stations.component';
 import { EditChargingStationComponent } from './modules/vendor/edit-charging-station/edit-charging-station.component';
+import { UserHomePageComponent } from './modules/user/user-home-page/user-home-page.component';
+import { UserBookingPageComponent } from './modules/user/user-booking-page/user-booking-page.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,9 @@ import { EditChargingStationComponent } from './modules/vendor/edit-charging-sta
     VendorDashboardComponent,
     VendorChargingStationComponent,
     VendorViewChargingStationsComponent,
-    EditChargingStationComponent
+    EditChargingStationComponent,
+    UserHomePageComponent,
+    UserBookingPageComponent
   ],
   imports: [
     BrowserModule,

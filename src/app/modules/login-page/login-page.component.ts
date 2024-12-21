@@ -91,7 +91,7 @@ export class LoginPageComponent implements OnInit {
         this.invalidCredentials = false;
         this.sharedService.loggedInUser = data;
         this.sharedService.isUserLoggedIn = true;
-        this.router.navigateByUrl('vendor-landing');
+        this.router.navigateByUrl(data.role === 'U' ? 'user-landing' : 'vendor-landing');
         console.log(data);
       }, error: (error: HttpErrorResponse) => {
         this.invalidCredentials = true;

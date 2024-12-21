@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { RegisterUser, User, UserResponse } from '../models/user';
+import { CityObject, pincodeObject, RegisterUser, User, UserResponse } from '../models/user';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { endpoints } from '../endpoints';
@@ -42,5 +42,13 @@ export class SharedService {
 
   updateVendorStationDetails(request: EditVendorStation) {
     return this.http.put<string>(endpoints.updateVendorDetails, request, this.httpOptions);
+  }
+
+  retriveDetailsByCity(request: CityObject) {
+    return this.http.post<EditVendorStation>(endpoints.retriveDetailsByCity, request, this.httpOptions);
+  }
+
+  retriveDetailsByPincode(request: pincodeObject) {
+    return this.http.post<EditVendorStation>(endpoints.retriveDetailsByPincode, request, this.httpOptions);
   }
 }
