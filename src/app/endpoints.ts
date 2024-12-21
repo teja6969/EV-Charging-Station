@@ -7,4 +7,6 @@ export const endpoints = {
     saveVendorDetails: `${gatewayBaseUrl}api/auth/saveVendorStationDetails`,
     retriveVendorDetails: `${gatewayBaseUrl}api/auth/retriveVendorStationDetails`,
     updateVendorDetails: `${gatewayBaseUrl}api/auth/updateVendorStationDetails`,
+    retriveDetailsByCity: `${gatewayBaseUrl}api/auth/uservendorretrieve`,
+    retriveDetailsByPincode: `${gatewayBaseUrl}api/auth/uservendorretrieve`,
 }

@@ -1,0 +1,51 @@
+<div class="booking-container">
+    <h1 class="main-heading">Book Slot</h1>
+    <h3 class="sub-heading">Search by City or Pincode</h3>
+
+
+    <form [formGroup]="searchForm">
+        <div class="booking-search">
+            <div class="city">
+                <mat-form-field>
+                    <mat-label>City</mat-label>
+                    <input matInput placeholder="Enter City" formControlName="city" (input)="inputCity()">
+                </mat-form-field>
+            </div>
+
+            <div class="or">
+                <span>OR</span>
+            </div>
+            
+            <div class="Zip">
+                <mat-form-field>
+                    <mat-label>Pincode</mat-label>
+                    <input matInput placeholder="Enter Pincode" formControlName="zip" (input)="inputZip()">
+                </mat-form-field>
+            </div>
+            <div class="search">
+                <button class="submit-button" mat-button [disabled]="!searchForm.valid" (click)="retriveData()">Search</button>
+            </div>
+            <div class="clear">
+                <button class="clear-button" mat-button [disabled]="!searchForm.valid" (click)="clearData()">Clear</button>
+            </div>
+        </div>
+    </form>
+
+
+    <mat-accordion class="example-headers-align">
+        @for (item of stationDetails; track item;  let i = $index) {
+        <mat-expansion-panel class="expansion-pannel" [ngClass]="{'border-red': i%2 ==0 , 'border-green': i%2 !=0}" hideToggle>
+            <mat-expansion-panel-header class="expansion-header">
+                <mat-panel-title> {{item.stationName | uppercase}} </mat-panel-title>
+                <mat-panel-description>
+                    <button mat-raised-button class="edit-button">Book</button>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+        </mat-expansion-panel>
+        } @empty {
+            <div class="content">
+                <p>No station Details</p>
+            </div>
+        }
+    </mat-accordion>
+</div>

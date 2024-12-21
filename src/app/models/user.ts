@@ -26,3 +26,20 @@ export class RegisterUser {
     role!: string;
     phone!: string;
 }
+
+export class CityObject {
+    city: string;
+
+    constructor() {
+        this.city = '';
+    }
+}
+
+
+export class pincodeObject {
+    pincode: number;
+
+    constructor() {
+        this.pincode = 0;
+    }
+}
