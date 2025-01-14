@@ -4,6 +4,8 @@ import { SharedService } from '../../../services/shared.service';
 import { CityObject, pincodeObject } from '../../../models/user';
 import { EditVendorStation } from '../../../models/vendor';
 import { HttpErrorResponse } from '@angular/common/http';
+import { MatDialog } from '@angular/material/dialog';
+import { BookingDialogComponent } from '../booking-dialog/booking-dialog.component';
 
 @Component({
   selector: 'app-user-booking-page',
@@ -15,7 +17,7 @@ export class UserBookingPageComponent implements OnInit {
   searchForm!: FormGroup;
   stationDetails: Array<EditVendorStation> = [];
 
-  constructor(private fb: FormBuilder, private sharedService: SharedService) { }
+  constructor(private fb: FormBuilder, private sharedService: SharedService, private dialog: MatDialog) { }
 
   ngOnInit(): void {
     this.searchForm = this.fb.group({
@@ -80,6 +82,16 @@ export class UserBookingPageComponent implements OnInit {
         }
       });
     }
+  }
+
+  bookSlot(details: EditVendorStation): void {
+    const dialogRef = this.dialog.open(BookingDialogComponent, {
+      data: { leadData: details }
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      this.retriveData();
+    });
   }
 
 }

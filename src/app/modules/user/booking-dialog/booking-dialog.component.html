@@ -1,0 +1,33 @@
+<div class="form-container">
+    <mat-stepper  #stepper [linear]="false">
+        <mat-step [stepControl]="userBookingForm">
+            <div class="booking-form-grid">
+                <form [formGroup]="userBookingForm">
+                    <ng-template matStepLabel>Vehical Details</ng-template>
+                    <div class="brand">
+                        <mat-form-field>
+                            <mat-label>Vehical Brand</mat-label>
+                            <input matInput placeholder="Brand Name" formControlName="brand" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="model">
+                        <mat-form-field>
+                            <mat-label>Name of EV Charging Station</mat-label>
+                            <input matInput placeholder="Model" formControlName="model" required>
+                        </mat-form-field>
+                    </div>
+                    <div class="landmark">
+                        <mat-form-field>
+                            <mat-label>Landmark</mat-label>
+                            <input matInput formControlName="landmark" required>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="submit">
+                        <button class="submit-button" mat-button matStepperNext>Next</button>
+                    </div>
+                </form>
+            </div>
+        </mat-step>
+    </mat-stepper>
+</div>
