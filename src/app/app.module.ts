@@ -21,6 +21,7 @@ import { VendorViewChargingStationsComponent } from './modules/vendor/vendor-vie
 import { EditChargingStationComponent } from './modules/vendor/edit-charging-station/edit-charging-station.component';
 import { UserHomePageComponent } from './modules/user/user-home-page/user-home-page.component';
 import { UserBookingPageComponent } from './modules/user/user-booking-page/user-booking-page.component';
+import { BookingDialogComponent } from './modules/user/booking-dialog/booking-dialog.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { UserBookingPageComponent } from './modules/user/user-booking-page/user-
     VendorViewChargingStationsComponent,
     EditChargingStationComponent,
     UserHomePageComponent,
-    UserBookingPageComponent
+    UserBookingPageComponent,
+    BookingDialogComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,56 @@
+@import '../../../variable.scss';
+
+.station-container {
+  padding: 20px;
+}
+
+.main-heading {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: $font;
+    margin-bottom: 20px;
+  }
+
+  .form-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    height: 100vh;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .vendor-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "brand"
+      "model"
+      "landmark"
+      "city"
+      "state"
+      "zip"
+      "submit";
+  }
+
+  .brand {
+    grid-area: brand;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 55%;
+  }
+
+  .model {
+    grid-area: model;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 55%;
+  }
+
+
+
+  ::ng-deep .mat-mdc-dialog-container .mdc-dialog__container {
+    min-width: 105%;
+    position: relative;
+    height: 100vh;
+    left: 0%;
+  }
