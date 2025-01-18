@@ -9,4 +9,6 @@ export const endpoints = {
     updateVendorDetails: `${gatewayBaseUrl}api/auth/updateVendorStationDetails`,
     retriveDetailsByCity: `${gatewayBaseUrl}api/auth/uservendorretrieve`,
     retriveDetailsByPincode: `${gatewayBaseUrl}api/auth/uservendorretrieve`,
+    predictTime: `${gatewayBaseUrl}api/auth/predictTime`,
+    bookSlot: `${gatewayBaseUrl}api/auth/slotbooking`,
 }

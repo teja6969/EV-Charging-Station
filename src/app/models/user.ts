@@ -43,3 +43,35 @@ export class pincodeObject {
         this.pincode = 0;
     }
 }
+
+export class predictTime {
+    vendorid: string;
+    batterycapacity: number;
+    currentcharge: number;
+    stationid: number
+
+    constructor() {
+        this.vendorid = '';
+        this.batterycapacity = 0;
+        this.currentcharge = 0;
+        this.stationid = 1;
+    }
+}
+
+export class response {
+    message!: string;
+}
+
+export class reservation {
+    evbrand!: string;
+    evmodel!: string;
+    stationID!: number;
+    vendorid!: string;
+    batteryStatus!: number;
+    sdatet!: string;
+    edatet!: string;
+    slotType!: string;
+    paymentType!: string;
+    status!: string;
+
+}
