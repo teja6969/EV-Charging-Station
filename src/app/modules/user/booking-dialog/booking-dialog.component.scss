@@ -19,16 +19,26 @@
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
   }
 
-  .vendor-form-grid {
+  .booking-form-grid {
     display: grid;
     grid-template-columns: 1fr;
     grid-template-areas:
       "brand"
       "model"
-      "landmark"
-      "city"
-      "state"
-      "zip"
+      "battery-status"
+      "start-grid"
+      "submit";
+  }
+
+  .payment-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "Type"
+      "qr-img"
+      "hint-text"
+      "card-num"
+      "start-grid"
       "submit";
   }
 
@@ -46,11 +56,114 @@
     width: 55%;
   }
 
+  .slot {
+    grid-area: slot;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 55%;
+  }
+
+  .battery-status  {
+    grid-area: battery-status;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 55%;
+  }
+
+  .card-num {
+    grid-area: card-num;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 55%;
+  }
+
+  .start-date {
+    grid-area: start-date;
+    display: grid;
+    margin-right: 1%;
+  }
+
+  .start-time {
+    grid-area: start-time;
+    display: grid;
+    margin-left: 1%;
+  }
+
+  .end-time {
+    grid-area: end-time;
+    display: grid;
+    margin-right: 1%;
+  }
+
+  .start-grid {
+    display: grid;
+    width: 55%;
+    grid-area: start-grid;
+    grid-template-columns: 0.5fr 0.5fr;
+    grid-template-areas:
+      "start-date start-time"
+      "end-time ."
+  }
+
+  .Type {
+    grid-area: Type;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 55%;
+  }
+
+  .qr-img {
+    margin-top: 5%;
+    margin-bottom: 5%;
+  }
+
+  .hint-text {
+    display: grid;
+    grid-area: hint-text;
+    font-family: $font !important;
+  }
+
+  .spinner {
+    display: flex;
+    flex-direction: column;
+    margin-top: 15%;
+    align-items: center;
+    gap: 30px;
+  }
+
+  .margin-10 {
+    margin: 5% 0% 5% 0%;
+  }
+
+  .submit {
+    grid-area: submit;
+    display: grid;
+    margin: 1.5% 0% 1.5% 40%;
+    width: 15%;
+
+    .submit-button {
+      border-radius: 36px;
+      border: 2px solid #11998e !important;
+      background: white !important;
+      color: #11998e !important;
+      font-family: $font;
+      font-weight: 500;
+    }
+
+    .submit-button:hover {
+      border: 2px solid #11998e !important;
+      background: #11998e !important;
+      color: white !important;
+    }
+  }
+
+
+
 
 
   ::ng-deep .mat-mdc-dialog-container .mdc-dialog__container {
-    min-width: 105%;
+    min-width: 65rem;
     position: relative;
-    height: 100vh;
+    height: 93vh;
     left: 0%;
   }

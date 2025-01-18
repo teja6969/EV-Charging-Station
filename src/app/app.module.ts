@@ -22,6 +22,7 @@ import { EditChargingStationComponent } from './modules/vendor/edit-charging-sta
 import { UserHomePageComponent } from './modules/user/user-home-page/user-home-page.component';
 import { UserBookingPageComponent } from './modules/user/user-booking-page/user-booking-page.component';
 import { BookingDialogComponent } from './modules/user/booking-dialog/booking-dialog.component';
+import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
 
 @NgModule({
   declarations: [
@@ -46,6 +47,7 @@ import { BookingDialogComponent } from './modules/user/booking-dialog/booking-di
     GoogleMapsModule,
     HttpClientModule,
     AppRoutingModule,
+    NgxMatTimepickerModule.setLocale('en-US'),
     MaterialModule
   ],
   providers: [

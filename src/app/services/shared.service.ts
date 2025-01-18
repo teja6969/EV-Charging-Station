@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { CityObject, pincodeObject, RegisterUser, User, UserResponse } from '../models/user';
+import { CityObject, pincodeObject, predictTime, RegisterUser, reservation, response, User, UserResponse } from '../models/user';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { endpoints } from '../endpoints';
@@ -50,5 +50,13 @@ export class SharedService {
 
   retriveDetailsByPincode(request: pincodeObject) {
     return this.http.post<EditVendorStation>(endpoints.retriveDetailsByPincode, request, this.httpOptions);
+  }
+
+  predictTime(request: predictTime) {
+    return this.http.post<response>(endpoints.predictTime, request, this.httpOptions);
+  }
+
+  bookSlot(request: reservation) {
+    return this.http.post<response>(endpoints.bookSlot, request, this.httpOptions);
   }
 }

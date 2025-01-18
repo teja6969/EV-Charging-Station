@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-confirmation-page',
@@ -6,5 +6,7 @@ import { Component } from '@angular/core';
   styleUrl: './confirmation-page.component.scss'
 })
 export class ConfirmationPageComponent {
+
+  @Input() isUser = false;
 
 }

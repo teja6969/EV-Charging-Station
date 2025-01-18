@@ -1,33 +1,135 @@
 <div class="form-container">
-    <mat-stepper  #stepper [linear]="false">
+    @if(!loader) {
+    <mat-stepper #stepper [linear]="true">
         <mat-step [stepControl]="userBookingForm">
             <div class="booking-form-grid">
                 <form [formGroup]="userBookingForm">
-                    <ng-template matStepLabel>Vehical Details</ng-template>
+                    <ng-template matStepLabel>Booking Info</ng-template>
                     <div class="brand">
                         <mat-form-field>
                             <mat-label>Vehical Brand</mat-label>
-                            <input matInput placeholder="Brand Name" formControlName="brand" required>
+                            <input matInput placeholder="Tata" formControlName="brand" required>
                         </mat-form-field>
                     </div>
                     <div class="model">
                         <mat-form-field>
-                            <mat-label>Name of EV Charging Station</mat-label>
-                            <input matInput placeholder="Model" formControlName="model" required>
+                            <mat-label>Vehical Model</mat-label>
+                            <input matInput placeholder="Tata Punch EV" formControlName="model" required>
                         </mat-form-field>
                     </div>
-                    <div class="landmark">
+                    <div class="slot">
                         <mat-form-field>
-                            <mat-label>Landmark</mat-label>
-                            <input matInput formControlName="landmark" required>
+                            <mat-label>Slot Type</mat-label>
+                            <mat-select formControlName="slotType" required>
+                                @for (food of sentData.leadData.sl; track food) {
+                                  <mat-option [value]="food.slotType">{{food.slotType}}</mat-option>
+                                }
+                              </mat-select>
                         </mat-form-field>
+                    </div>
+                    <div class="battery-status">
+
+                            <mat-label>Current Battery Status</mat-label>
+                            <mat-slider class="margin-10" [max]="100" [min]="0" [step]="1" [discrete]="true">
+                                <input matSliderThumb formControlName="batteryStatus" #slider required>
+                            </mat-slider>
+                    </div>
+
+                    <div class="start-grid">
+                        <div class="start-date">
+                            <mat-form-field>
+                                <mat-label>Start Date</mat-label>
+                                <input matInput [matDatepicker]="picker" formControlName="startDate">
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker touchUi #picker></mat-datepicker>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="start-time">
+                            <mat-form-field>
+                                <mat-label>Start Time</mat-label>
+                                <input matInput formControlName="startTime" [ngxMatTimepicker]="timePicker" readonly>
+                                <ngx-mat-timepicker #timePicker></ngx-mat-timepicker>
+                            </mat-form-field>
+                        </div>
+
+                        @if (showEndTime) {
+                            <div class="end-time">
+                                <mat-form-field>
+                                    <mat-label>Estimated End Time</mat-label>
+                                    <input matInput formControlName="endTime" [ngxMatTimepicker]="timePicker" readonly>
+                                    <ngx-mat-timepicker #timePicker></ngx-mat-timepicker>
+                                </mat-form-field>
+                            </div>
+                        }
                     </div>
 
                     <div class="submit">
-                        <button class="submit-button" mat-button matStepperNext>Next</button>
+                        <button class="submit-button" mat-button matStepperNext>Book Slot</button>
                     </div>
                 </form>
             </div>
         </mat-step>
+
+        <mat-step [stepControl]="paymentForm">
+            <div class="payment-form-grid">
+                <form [formGroup]="paymentForm">
+                    <ng-template matStepLabel>Payment Info</ng-template>
+                    <div class="Type">
+                        <mat-label>Payment Type</mat-label><br>
+                        <mat-radio-group formControlName="paymentType" required>
+                            <mat-radio-button value="U">UPI</mat-radio-button>
+                            <mat-radio-button value="C">Credit / Debit Card</mat-radio-button>
+                        </mat-radio-group>
+                    </div>
+
+                    @if(showUPI) {
+                        <div class="qr-img">
+                            <img class="mat-elevation-z8" src="assets/qr.png" />
+                        </div>
+                        <div class="hint-text">
+                            <span>Transactions of Rs.50/- will be applicable</span>
+                        </div>
+                    } @else {
+                        <div class="card-num">
+                            <mat-form-field>
+                                <mat-label>Card Number</mat-label>
+                                <input matInput placeholder="374245455400126" required>
+                            </mat-form-field>
+                        </div>
+
+                        <div class="start-grid">
+                            <div class="start-date">
+                                <mat-form-field>
+                                    <mat-label>Exp Date</mat-label>
+                                    <input matInput [matDatepicker]="picker" required>
+                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                    <mat-datepicker touchUi #picker></mat-datepicker>
+                                </mat-form-field>
+                            </div>
+    
+                            <div class="start-time">
+                                <mat-form-field>
+                                    <mat-label>CVV</mat-label>
+                                    <input matInput placeholder="282" type="password" required>
+                                </mat-form-field>
+                            </div>
+                        </div>
+                    }
+
+                    <div class="submit">
+                        <button class="submit-button" mat-button matStepperNext (click)="bookSlot()" >Done</button>
+                    </div>
+                </form>
+            </div>
+        </mat-step>
+
+
     </mat-stepper>
+    } @else {
+    <div class="spinner">
+        <mat-spinner></mat-spinner>
+        <span>Estimating Time....</span>
+    </div>
+    }
 </div>

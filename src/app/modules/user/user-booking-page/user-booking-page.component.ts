@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { SharedService } from '../../../services/shared.service';
 import { CityObject, pincodeObject } from '../../../models/user';
@@ -16,6 +16,8 @@ export class UserBookingPageComponent implements OnInit {
 
   searchForm!: FormGroup;
   stationDetails: Array<EditVendorStation> = [];
+
+  @Output() showConfirmation: EventEmitter<string> = new EventEmitter();
 
   constructor(private fb: FormBuilder, private sharedService: SharedService, private dialog: MatDialog) { }
 
@@ -92,6 +94,12 @@ export class UserBookingPageComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       this.retriveData();
     });
+
+    dialogRef.componentInstance.doneBooking.subscribe(res => {
+      if(res == 'done') {
+        this.showConfirmation.emit('show');
+      }
+    })
   }
 
 }
