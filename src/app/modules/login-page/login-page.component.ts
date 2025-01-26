@@ -24,6 +24,9 @@ export class LoginPageComponent implements OnInit {
   failureAlert = false;
   failureMsg = ''; 
 
+  showLoader = false;
+  loaderText = '';
+
   constructor(private fb: FormBuilder, private sharedService: SharedService, private route: ActivatedRoute, private router: Router) {}
 
   ngOnInit() {
@@ -34,8 +37,8 @@ export class LoginPageComponent implements OnInit {
 
     this.registerationForm = this.fb.group({
       username: ['', Validators.required],
-      password: ['', Validators.required],
-      email: ['', Validators.required],
+      password: ['', Validators.compose([Validators.required, Validators.minLength(6)])],
+      email: ['', Validators.compose([Validators.required, Validators.email,Validators.pattern('^[a-z0-9._%+-]+@[a-z0-9.-]+\\.[a-z]{2,4}$')])],
       role: ['U', Validators.required],
       phone: ['', Validators.required]
     });
@@ -102,6 +105,8 @@ export class LoginPageComponent implements OnInit {
   }
 
   register(): void {
+    this.showLoader = true;
+    this.loaderText = 'Registering......';
     const body = new RegisterUser();
     body.username = this.registerationForm.controls['username'].value;
     body.password = this.registerationForm.controls['password'].value;
@@ -111,16 +116,49 @@ export class LoginPageComponent implements OnInit {
 
     this.sharedService.registerUser(body).subscribe({
       next: (data: string) => {
+        this.showLoader = false;
         this.successAlert = true;
         this.failureAlert = false;
         this.successMsg = 'Registration Successful';
         this.failureMsg = '';
+
+        setTimeout(() => {
+          this.showLoader = true;
+          this.loaderText = 'Logging In ............'
+          const Loginbody = new User();
+          Loginbody.email = body.email;
+          Loginbody.password = body.password;
+      
+      
+          this.sharedService.userLogin(body).subscribe({
+            next: (data: UserResponse) => {
+              this.invalidCredentials = false;
+              this.sharedService.loggedInUser = data;
+              this.sharedService.isUserLoggedIn = true;
+              this.showLoader = false;
+              this.router.navigateByUrl(data.role === 'U' ? 'user-landing' : 'vendor-landing');
+              console.log(data);
+            }, error: (error: HttpErrorResponse) => {
+              this.invalidCredentials = true;
+              this.showLoader = false;
+              this.clearForm();
+            } 
+          });
+
+        }, 2000)
+
       }, error: (error: HttpErrorResponse) => {
+        this.showLoader = false;
         this.successAlert = false;
         this.failureAlert = true;
         this.successMsg = '';
         this.failureMsg = 'Account Already Exists';
       } 
     });
+  }
+
+  numberOnly(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    input.value = input.value.replace(/[^0-9]/g, "");
   }
 }

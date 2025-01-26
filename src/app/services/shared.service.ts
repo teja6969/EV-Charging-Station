@@ -3,7 +3,7 @@ import { CityObject, pincodeObject, predictTime, RegisterUser, reservation, resp
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { endpoints } from '../endpoints';
-import { EditVendorStation, RetriveVendor, SaveVendorStation } from '../models/vendor';
+import { EditVendorStation, FeedBackModel, RetriveVendor, SaveVendorStation } from '../models/vendor';
 
 @Injectable({
   providedIn: 'root'
@@ -59,4 +59,29 @@ export class SharedService {
   bookSlot(request: reservation) {
     return this.http.post<response>(endpoints.bookSlot, request, this.httpOptions);
   }
+
+  changePassword(id: string, password: string) {
+    return this.http.put<any>(endpoints.validateandupdatepassword, {userid: id, newPassword: password}, this.httpOptions);
+  }
+
+  userBookingHistory(id: string): Observable<any> {
+    return this.http.post<Array<reservation>>(endpoints.userbookinghistory, {id: id}, this.httpOptions);
+  }
+
+  retrivelatandlong(id: string, stationId: string) {
+    return this.http.post<EditVendorStation>(endpoints.retrivelatandlong, {vendorid: id, stationid: stationId}, this.httpOptions);
+  }
+
+  submitFeedback(request: FeedBackModel) {
+    return this.http.post<any>(endpoints.feedback, request, this.httpOptions);
+  }
+
+  getFeedback(id: number) {
+    return this.http.post<Array<FeedBackModel>>(endpoints.getfeedback, {stationID: id}, this.httpOptions);
+  }
+
+  getBookingHistory(id: string) {
+    return this.http.post<any>(endpoints.vendorbookinghistory, {vendorid: id}, this.httpOptions);
+  }
+
 }

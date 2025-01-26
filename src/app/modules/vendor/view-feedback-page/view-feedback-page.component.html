@@ -1,0 +1,48 @@
+<div class="station-container">
+    <h1 class="main-heading">View Feedback</h1>
+
+    <mat-accordion class="example-headers-align">
+        @for (item of stationDetails; track item;  let i = $index) {
+        <mat-expansion-panel class="expansion-pannel" [ngClass]="{'border-red': i%2 ==0 , 'border-green': i%2 !=0}" hideToggle>
+            <mat-expansion-panel-header class="expansion-header">
+                <mat-panel-title> {{item.stationName | uppercase}} </mat-panel-title>
+                <mat-panel-description>
+                    <button mat-raised-button class="edit-button" (click)="editDetails(item)">View Feedback</button>
+                </mat-panel-description>
+            </mat-expansion-panel-header>
+
+            @for (detail of feedbackDetails; track $index) {
+                @if (showFeedback && item.stationID == detail.stationID) {
+
+
+                    <h3 class="sub-heading-1">Feedback</h3>
+
+                    @if(item.stationID == detail.stationID) {
+
+                        <div class="data-line">
+                            <div class="left">User ID</div>
+                            <div class="right">{{detail.userId}}</div>
+                        </div>
+                        <div class="data-line">
+                            <div class="left">Posted On</div>
+                            <div class="right">{{formatDate(detail.createdAt)}}</div>
+                        </div>
+                        <div class="data-line">
+                            <div class="left">Feedback</div>
+                            <div class="right">{{detail.feedbacktext}}</div>
+                        </div>
+                        <div class="data-line">
+                            <div class="left">Rating</div>
+                            <div class="right">{{detail.rating}}</div>
+                        </div>
+                    }
+
+                }
+            }
+
+
+
+        </mat-expansion-panel>
+        }
+    </mat-accordion>
+</div>

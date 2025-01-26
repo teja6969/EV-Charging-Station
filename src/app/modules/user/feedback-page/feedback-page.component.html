@@ -1,0 +1,24 @@
+
+<div class="form-container">
+    <h1 class="main-heading">Feedback</h1>
+    <div class="booking-form-grid">
+        <form [formGroup]="feedbackForm">
+            <div class="feedback">
+                <mat-form-field>
+                    <mat-label>Please proide the feedback</mat-label>
+                    <textarea matInput formControlName="feedback" required></textarea>
+                </mat-form-field>
+            </div>
+            <div class="rating">
+                <mat-label>Rating</mat-label>
+                <mat-slider min="0" max="5" step="1" showTickMarks discrete [displayWith]="formatLabel">
+                    <input matSliderThumb formControlName="rate">
+                  </mat-slider>
+            </div>
+            <div class="submit">
+                <button class="submit-button" mat-button [disabled]="!feedbackForm.valid" (click)="submit()">Submit</button>
+            </div>
+        </form>
+    </div>
+    
+</div>

@@ -105,17 +105,12 @@
   justify-content: center;
 }
 
-.invalid-cred {
-  grid-area: invalid-cred;
+.error-msg {
+  color: red !important;
   display: flex;
-  justify-content: center; 
+  left: 12%;
+  position: relative;
   font-weight: 400;
-  margin-top: 25px;
-  margin-bottom: 25px;
-
-  .error-msg {
-    color: red !important;
-  }
 }
 
 .login-buttons {
@@ -315,4 +310,17 @@ mat-label {
 
 input {
   font-family: $font !important;
+}
+
+.spinner {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .text {
+    margin-top: 3%;
+    font-size: 18px;
+    font-weight: bold;
+  }
 }

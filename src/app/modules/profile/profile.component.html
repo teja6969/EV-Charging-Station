@@ -1,0 +1,120 @@
+@if(showProfile) {
+<div class="booking-container">
+    <h1 class="main-heading">Profile</h1>
+
+    @if(this.sharedService.loggedInUser.role == 'U') {
+    <div class="profile-div">
+        <div class="data-line">
+            <div class="left">User Name : </div>
+            <div class="right">{{this.sharedService.loggedInUser.username}}</div>
+        </div>
+        <div class="data-line">
+            <div class="left">E mail : </div>
+            <div class="right">{{this.sharedService.loggedInUser.email}}</div>
+        </div>
+        <div class="data-line">
+            <div class="left">Phone : </div>
+            <div class="right">{{this.sharedService.loggedInUser.phone}}</div>
+        </div>
+        <div class="data-line">
+            <div class="left">Role Type : </div>
+            <div class="right">User</div>
+        </div>
+    </div>
+
+    <div class="search">
+        <button class="submit-button" (click)="changePassword()">Change Password</button>
+    </div>
+    } @else {
+    <div class="profile-div">
+        <div class="data-line">
+            <div class="left">User Name : </div>
+            <div class="right">{{this.sharedService.loggedInUser.username}}</div>
+        </div>
+        <div class="data-line">
+            <div class="left">E mail : </div>
+            <div class="right">{{this.sharedService.loggedInUser.email}}</div>
+        </div>
+        <div class="data-line">
+            <div class="left">Phone :</div>
+            <div class="right">{{this.sharedService.loggedInUser.phone}}</div>
+        </div>
+        <div class="data-line">
+            <div class="left">Role Type : </div>
+            <div class="right">EV Charging Station Provider</div>
+        </div>
+    </div>
+
+    <div class="search">
+        <button class="submit-button" (click)="changePassword()">Change Password</button>
+    </div>
+    }
+</div>
+}
+
+@if(!showProfile) {
+<div class="booking-container">
+    <h1 class="main-heading">Change Password</h1>
+    <div class="form-grid">
+        <form [formGroup]="passwordForm">
+            <div class="current">
+                <mat-form-field style="width: 85%; height: 36px;">
+                    <mat-label>Current Password</mat-label>
+                    <input matInput [type]="hide() ? 'password' : 'text'" placeholder="Enter Password"
+                        formControlName="currentPassword" />
+                    <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide()">
+                        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+            </div>
+
+            <div class="new-password">
+                <mat-form-field style="width: 85%; height: 36px;">
+                    <mat-label>New Password</mat-label>
+                    <input matInput [type]="hide() ? 'password' : 'text'" placeholder="Enter Password"
+                        formControlName="newPassword" />
+                    <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide()">
+                        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                @if(passwordForm.get('newPassword')?.errors?.['minlength']) {
+                    <div class="invalid-cred">
+                        <mat-error class="error-msg">Password must be at least 6 characters</mat-error>
+                    </div>
+                    }
+            </div>
+
+            <div class="confirm">
+                <mat-form-field style="width: 85%; height: 36px;">
+                    <mat-label>Confirm Password</mat-label>
+                    <input matInput [type]="hide() ? 'password' : 'text'" placeholder="Enter Password"
+                        formControlName="conifrmPassword" (input)="comparePassword()"/>
+                    <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+                        [attr.aria-pressed]="hide()">
+                        <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                </mat-form-field>
+
+                @if(passwordForm.get('conifrmPassword')?.errors?.['mismatch']) {
+                <div class="invalid-cred">
+                    <mat-error class="error-msg">Password Dosen't Match</mat-error>
+                </div>
+                }
+            </div>
+
+            @if (passwordChangeFailed) {
+                <div class="invalid-password">
+                    <mat-error class="error-msg">Error Updating Password</mat-error>
+                </div>
+            }
+
+            <div class="save-button">
+                <button class="submit1-button" [disabled]="!passwordForm.valid" (click)="validate()">Change Password</button>
+            </div>
+        </form>
+    </div>
+</div>
+}

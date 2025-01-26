@@ -14,7 +14,7 @@ export class VendorHomePageComponent implements AfterViewInit {
   showDashboard = false;
   showChargingStation = false;
   showStations = false;
-  showHelp = false;
+  showFeedback = false;
   showConfirmationPage = false;
 
   @ViewChild(MatSidenav)
@@ -53,8 +53,8 @@ export class VendorHomePageComponent implements AfterViewInit {
     if(value == 'ViewStation') {
       this.showStations = true;
     }
-    if(value == 'Help') {
-      this.showHelp = true;
+    if(value == 'feedback') {
+      this.showFeedback = true;
     }
   }
 
@@ -62,7 +62,7 @@ export class VendorHomePageComponent implements AfterViewInit {
     this.showDashboard = false;
     this.showChargingStation = false;
     this.showStations = false;
-    this.showHelp = false;
+    this.showFeedback = false;
     this.showConfirmationPage = false;
   }
 

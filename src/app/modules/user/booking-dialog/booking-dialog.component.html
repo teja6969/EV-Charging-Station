@@ -22,17 +22,17 @@
                             <mat-label>Slot Type</mat-label>
                             <mat-select formControlName="slotType" required>
                                 @for (food of sentData.leadData.sl; track food) {
-                                  <mat-option [value]="food.slotType">{{food.slotType}}</mat-option>
+                                <mat-option [value]="food.slotType">{{food.slotType}}</mat-option>
                                 }
-                              </mat-select>
+                            </mat-select>
                         </mat-form-field>
                     </div>
                     <div class="battery-status">
-
+                        <mat-form-field>
                             <mat-label>Current Battery Status</mat-label>
-                            <mat-slider class="margin-10" [max]="100" [min]="0" [step]="1" [discrete]="true">
-                                <input matSliderThumb formControlName="batteryStatus" #slider required>
-                            </mat-slider>
+                            <input matInput type="text" placeholder="5" maxlength="3" formControlName="batteryStatus" required (input)="numberOnly($event)" />
+                            <span matSuffix class="percent">%</span>
+                        </mat-form-field>
                     </div>
 
                     <div class="start-grid">
@@ -54,13 +54,13 @@
                         </div>
 
                         @if (showEndTime) {
-                            <div class="end-time">
-                                <mat-form-field>
-                                    <mat-label>Estimated End Time</mat-label>
-                                    <input matInput formControlName="endTime" [ngxMatTimepicker]="timePicker" readonly>
-                                    <ngx-mat-timepicker #timePicker></ngx-mat-timepicker>
-                                </mat-form-field>
-                            </div>
+                        <div class="end-time">
+                            <mat-form-field>
+                                <mat-label>Estimated End Time</mat-label>
+                                <input matInput formControlName="endTime" [ngxMatTimepicker]="timePicker" readonly>
+                                <ngx-mat-timepicker #timePicker></ngx-mat-timepicker>
+                            </mat-form-field>
+                        </div>
                         }
                     </div>
 
@@ -84,41 +84,41 @@
                     </div>
 
                     @if(showUPI) {
-                        <div class="qr-img">
-                            <img class="mat-elevation-z8" src="assets/qr.png" />
-                        </div>
-                        <div class="hint-text">
-                            <span>Transactions of Rs.50/- will be applicable</span>
-                        </div>
+                    <div class="qr-img">
+                        <img class="mat-elevation-z8" src="assets/qr.png" />
+                    </div>
+                    <div class="hint-text">
+                        <span>Transactions of Rs.50/- will be applicable</span>
+                    </div>
                     } @else {
-                        <div class="card-num">
+                    <div class="card-num">
+                        <mat-form-field>
+                            <mat-label>Card Number</mat-label>
+                            <input matInput placeholder="374245455400126" required>
+                        </mat-form-field>
+                    </div>
+
+                    <div class="start-grid">
+                        <div class="start-date">
                             <mat-form-field>
-                                <mat-label>Card Number</mat-label>
-                                <input matInput placeholder="374245455400126" required>
+                                <mat-label>Exp Date</mat-label>
+                                <input matInput [matDatepicker]="picker" required>
+                                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                <mat-datepicker touchUi #picker></mat-datepicker>
                             </mat-form-field>
                         </div>
 
-                        <div class="start-grid">
-                            <div class="start-date">
-                                <mat-form-field>
-                                    <mat-label>Exp Date</mat-label>
-                                    <input matInput [matDatepicker]="picker" required>
-                                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                                    <mat-datepicker touchUi #picker></mat-datepicker>
-                                </mat-form-field>
-                            </div>
-    
-                            <div class="start-time">
-                                <mat-form-field>
-                                    <mat-label>CVV</mat-label>
-                                    <input matInput placeholder="282" type="password" required>
-                                </mat-form-field>
-                            </div>
+                        <div class="start-time">
+                            <mat-form-field>
+                                <mat-label>CVV</mat-label>
+                                <input matInput placeholder="282" type="password" required>
+                            </mat-form-field>
                         </div>
+                    </div>
                     }
 
                     <div class="submit">
-                        <button class="submit-button" mat-button matStepperNext (click)="bookSlot()" >Done</button>
+                        <button class="submit-button" mat-button matStepperNext (click)="bookSlot()">Done</button>
                     </div>
                 </form>
             </div>
@@ -129,7 +129,7 @@
     } @else {
     <div class="spinner">
         <mat-spinner></mat-spinner>
-        <span>Estimating Time....</span>
+        <span>{{loaderText}}</span>
     </div>
     }
 </div>

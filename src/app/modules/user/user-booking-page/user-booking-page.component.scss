@@ -40,7 +40,7 @@
 
 .edit-button {
   border-radius: 36px;
-  margin-left: 85%;
+  // margin-left: 85%;
   border: 2px solid #11998e !important;
   background: white !important;
   color: #11998e !important;
@@ -72,6 +72,28 @@
     background: #11998e !important;
     color: white !important;
   }
+
+  .directions-button {
+    border-radius: 36px;
+    border: 2px solid #11998e !important;
+    background: white !important;
+    color: #11998e !important;
+    font-family: $font;
+    font-weight: 500;
+    width: 20%;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    position: relative;
+    left: 60%;
+  }
+  
+  .directions-button:hover {
+    border: 2px solid #11998e !important;
+    background: #11998e !important;
+    color: white !important;
+  }
+
 
 .submit-button {
     border-radius: 36px;
@@ -173,4 +195,33 @@
     height: 100%;
     font-family: $font !important;
     color: lightgray;
+}
+
+.data-line {
+  display: flex;
+  flex-direction: row;
+  font-size: 13px;
+  font-family: $font;
+  margin-bottom: 2%;
+
+  .left {
+    flex: 1;
+    //font-weight: bold;
+  }
+
+  .right {
+    flex: 2;
+  }
+
+  .multi-line {
+    display: contents;
+    line-height: 1.25;
+  }
+}
+
+.sub-heading-1 {
+  font-size: 14px;
+  font-weight: 800;
+  font-family: Poppins, sans-serif;
+  margin-bottom: 25px;
 }

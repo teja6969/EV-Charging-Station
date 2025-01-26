@@ -11,4 +11,11 @@ export const endpoints = {
     retriveDetailsByPincode: `${gatewayBaseUrl}api/auth/uservendorretrieve`,
     predictTime: `${gatewayBaseUrl}api/auth/predictTime`,
     bookSlot: `${gatewayBaseUrl}api/auth/slotbooking`,
+    validateandupdatepassword: `${gatewayBaseUrl}api/auth/validateandupdatepassword`,
+    retrivelatandlong: `${gatewayBaseUrl}api/auth/retrivelatandlong`,
+    userbookinghistory: `${gatewayBaseUrl}api/auth/userbookinghistory`,
+    feedback: `${gatewayBaseUrl}api/auth/feedback`,
+    getfeedback: `${gatewayBaseUrl}api/auth/retrivefeedback`,
+    vendorbookinghistory: `${gatewayBaseUrl}api/auth/vendorbookinghistory`,
+    
 }

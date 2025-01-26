@@ -23,6 +23,7 @@ export class BookingDialogComponent implements OnInit {
   paymentForm!: FormGroup;
 
   loader: boolean = false;
+  loaderText = '';
   showEndTime = false;
   showUPI = true;
 
@@ -68,12 +69,13 @@ export class BookingDialogComponent implements OnInit {
 
   caluclateEndTime(): void {
     this.loader = true;
+    this.loaderText = 'Estimating Time ......';
     this.showEndTime = false;
     const body = new predictTime();
     body.vendorid = this.sentData.leadData.vendorid;
     body.stationid = this.sentData.leadData.stationID;
     body.batterycapacity = Number(this.sentData.leadData.capacity);
-    body.currentcharge = this.userBookingForm.controls['batteryStatus'].value ? this.userBookingForm.controls['batteryStatus'].value : 0;
+    body.currentcharge = this.userBookingForm.controls['batteryStatus'].value ? Number(this.userBookingForm.controls['batteryStatus'].value) : 0;
 
     this.sharedService.predictTime(body).subscribe({
       next: (data: response) => {
@@ -87,16 +89,23 @@ export class BookingDialogComponent implements OnInit {
 
           if (match) {
             const sTime = this.userBookingForm.controls['startTime'].value
+            console.log(sTime);
             const [time, period] = sTime.split(' ');
             const [shours, sminutes] = time.split(':').map(Number);
 
             const ehours = parseInt(match[1], 10);
             const eminutes = parseInt(match[2], 10);
 
-            const h = shours + ehours;
-            const m = sminutes + eminutes;
+            var h = shours + ehours;
+            var m = sminutes + eminutes;
+
+            if(m >= 60) {
+              h = h+1;
+              m = (m-60 == 0) ? '00': m-60;
+            }
 
             const TotalEndTime = h + ':' + m + ' ' + period;
+            console.log(TotalEndTime);
 
             this.userBookingForm.controls['endTime'].patchValue(TotalEndTime);
             this.userBookingForm.controls['endTime'].setValue(TotalEndTime);
@@ -124,12 +133,16 @@ export class BookingDialogComponent implements OnInit {
   }
 
   bookSlot() {
+    this.loader = true;
+    this.loaderText = 'Booking Slot ....'
     const body = new reservation();
     body.evbrand = this.userBookingForm.controls['brand'].value;
     body.evmodel = this.userBookingForm.controls['model'].value;
-    body.batteryStatus = this.userBookingForm.controls['batteryStatus'].value;
+    body.batterystatus = Number(this.userBookingForm.controls['batteryStatus'].value);
+    body.batteryCapacity = Number(this.sentData.leadData.capacity);
     body.stationID = this.sentData.leadData.stationID;
     body.vendorid = this.sentData.leadData.vendorid;
+    body.userId = this.sharedService.loggedInUser.userId;
     body.slotType = this.userBookingForm.controls['slotType'].value;
     body.sdatet = this.formatDateTime(this.userBookingForm.controls['startDate'].value , this.userBookingForm.controls['startTime'].value);
     body.edatet = this.formatDateTime(this.userBookingForm.controls['startDate'].value , this.userBookingForm.controls['endTime'].value);
@@ -138,12 +151,18 @@ export class BookingDialogComponent implements OnInit {
 
     this.sharedService.bookSlot(body).subscribe({
       next: (data) => {
+        this.loader = false;
         this.doneBooking.emit('done');
         this.dialogRef.close();
       }, error: (err: HttpErrorResponse) => {
+        this.loader = false;
         console.error(err);
       }
     })
   }
 
+  numberOnly(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    input.value = input.value.replace(/[^0-9]/g, "");
+  }
 }

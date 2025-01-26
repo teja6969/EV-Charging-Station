@@ -1,16 +1,25 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { SharedService } from '../../../services/shared.service';
+import { reservation } from '../../../models/user';
+import { HttpErrorResponse } from '@angular/common/http';
+import { EditVendorStation } from '../../../models/vendor';
 
 @Component({
   selector: 'app-vendor-dashboard',
   templateUrl: './vendor-dashboard.component.html',
   styleUrl: './vendor-dashboard.component.scss'
 })
-export class VendorDashboardComponent {
+export class VendorDashboardComponent implements OnInit {
 
-  totalSlots = 300;
-  availableSlots = 143;
+  totalSlots!: number;
+  availableSlots!: number;
   bookings!: number;
+
+
   viewSelection?: string = 'y';
+
+  bookingList: Array<reservation> = [];
+  stationDetails!: Array<EditVendorStation>;
 
   monthlyData = [67, 59, 89, 70];
   yearlyData = [65, 59, 80, 81, 56, 55, 40, 100, 0, 20, 40, 35];
@@ -40,7 +49,7 @@ export class VendorDashboardComponent {
   lineChartLegend = true;
 
 
-  constructor() {
+  constructor(public shareddervice: SharedService) {
     this.bookings = this.totalSlots - this.availableSlots;
     this.updateChart();
   }
@@ -58,5 +67,36 @@ export class VendorDashboardComponent {
   changeButton(value: string) {
     this.viewSelection = value;
     this.updateChart();
+  }
+
+
+  ngOnInit(): void {
+    this.totalSlots = 0;
+    this.retriveData();
+  }
+
+
+  retriveData(): void {
+    this.shareddervice.retriveVendorDetails().subscribe({
+      next: (response: any) => {
+        this.stationDetails = response;
+
+        this.shareddervice.getBookingHistory(this.shareddervice.loggedInUser.userId).subscribe({
+          next: (data: any) => {
+            this.bookingList = data;
+            this.stationDetails.forEach(detail => {
+              var slot = detail.slot;
+              this.totalSlots = this.totalSlots + slot;
+            });
+            this.bookings = this.bookingList.length;
+            this.availableSlots = this.totalSlots - this.bookings;
+          }, error: (e: HttpErrorResponse) => {
+            console.error(e);
+          } 
+        });
+      }, error: (error: HttpErrorResponse)=> {
+        console.error('error', error)
+      }
+    });
   }
 }

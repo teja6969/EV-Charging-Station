@@ -1,0 +1,93 @@
+@import '../../../variable.scss';
+
+.station-container {
+    padding: 20px;
+}
+
+.main-heading {
+    font-size: 24px;
+    font-weight: bold;
+    font-family: $font;
+    margin-bottom: 5px;
+  }
+
+  .sub-heading {
+    font-size: 12px;
+    font-weight: 600;
+    font-family: Poppins, sans-serif;
+    margin-bottom: 25px;
+  }
+
+.expansion-pannel {
+    margin-bottom: 3% !important;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5) !important;
+  }
+  .expansion-header {
+    height: 5rem;
+    font-size: 20px;
+    font-weight: bold;
+    font-family: $font !important;
+  }
+
+.border-red {
+  border-left: 10px solid red !important;
+  //border-bottom: 4px solid red !important;
+  border-radius: 15px;
+}
+
+.border-green {
+  border-left: 10px solid #11998e !important;
+  //border-bottom: 4px solid #11998e !important;
+  border-radius: 15px;
+}
+
+.edit-button {
+  border-radius: 36px;
+  margin-left: 85%;
+  border: 2px solid #11998e !important;
+  background: white !important;
+  color: #11998e !important;
+  font-family: $font;
+  font-weight: 500;
+  width: 15%;
+}
+
+.edit-button:hover {
+  border: 2px solid #11998e !important;
+  background: #11998e !important;
+  color: white !important;
+}
+
+.example-headers-align .mat-expansion-panel-header-description {
+  justify-content: space-between;
+  align-items: center;
+}
+
+.data-line {
+  display: flex;
+  flex-direction: row;
+  font-size: 13px;
+  font-family: $font;
+  margin-bottom: 2%;
+
+  .left {
+    flex: 1;
+    //font-weight: bold;
+  }
+
+  .right {
+    flex: 2;
+  }
+
+  .multi-line {
+    display: contents;
+    line-height: 1.25;
+  }
+}
+
+.sub-heading-1 {
+  font-size: 14px;
+  font-weight: 800;
+  font-family: Poppins, sans-serif;
+  margin-bottom: 25px;
+}
