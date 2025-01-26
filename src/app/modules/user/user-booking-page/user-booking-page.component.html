@@ -38,9 +38,70 @@
             <mat-expansion-panel-header class="expansion-header">
                 <mat-panel-title> {{item.stationName | uppercase}} </mat-panel-title>
                 <mat-panel-description>
+                    <button mat-raised-button class="directions-button" (click)="openGoogleMaps(item)">
+                        Get Directions
+                        <mat-icon>directions</mat-icon>
+                      </button>
                     <button mat-raised-button class="edit-button" (click)="bookSlot(item)">Book</button>
                 </mat-panel-description>
             </mat-expansion-panel-header>
+
+            <h3 class="sub-heading-1">Vendor Details</h3>
+
+            <div class="data-line">
+                <div class="left">Vendor Name</div>
+                <div class="right">{{item.vendorName}}</div>
+            </div>
+            <div class="data-line">
+                <div class="left">E mail</div>
+                <div class="right">{{item.email}}</div>
+            </div>
+            <div class="data-line">
+                <div class="left">Phone</div>
+                <div class="right">{{item.phone}}</div>
+            </div>
+            <div class="data-line">
+                <div class="left">Address</div>
+                <div class="right">{{item.landmark}}</div>
+            </div>
+            <div class="data-line">
+                <div class="left">City</div>
+                <div class="right">{{item.city}}</div>
+            </div>
+            <div class="data-line">
+                <div class="left">State</div>
+                <div class="right">{{item.state}}</div>
+            </div>
+            <div class="data-line">
+                <div class="left">Pin code</div>
+                <div class="right">{{item.pincode}}</div>
+            </div>
+
+            <h3 class="sub-heading-1">Station Details</h3>
+
+            <div class="data-line">
+                <div class="left">Number of Slots</div>
+                <div class="right">{{item.slot}}</div>
+            </div>
+            <div class="data-line">
+                <div class="left">Maximum Capacity</div>
+                <div class="right">{{item.capacity}}</div>
+            </div>
+            <div class="data-line">
+                <div class="left">Vehical Type</div>
+                <div class="right">{{item.vType}}</div>
+            </div>
+            <div class="data-line">
+                <div class="left">Adapter Type</div>
+                <div class="right">
+                    @for (slot of item.sl; track $index) {
+                        <div class="multi-line">
+                            {{slot.slotType}} <br>
+                        </div>
+                    }
+                </div>
+            </div>
+
         </mat-expansion-panel>
         } @empty {
             <div class="content">

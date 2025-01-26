@@ -23,6 +23,11 @@ import { UserHomePageComponent } from './modules/user/user-home-page/user-home-p
 import { UserBookingPageComponent } from './modules/user/user-booking-page/user-booking-page.component';
 import { BookingDialogComponent } from './modules/user/booking-dialog/booking-dialog.component';
 import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
+import { ProfileComponent } from './modules/profile/profile.component';
+import { UserBookingHistoryComponent } from './modules/user/user-booking-history/user-booking-history.component';
+import { BookingHistoryComponent } from './modules/vendor/booking-history/booking-history.component';
+import { FeedbackPageComponent } from './modules/user/feedback-page/feedback-page.component';
+import { ViewFeedbackPageComponent } from './modules/vendor/view-feedback-page/view-feedback-page.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +42,12 @@ import { NgxMatTimepickerModule } from 'ngx-mat-timepicker';
     EditChargingStationComponent,
     UserHomePageComponent,
     UserBookingPageComponent,
-    BookingDialogComponent
+    BookingHistoryComponent,
+    UserBookingHistoryComponent,
+    BookingDialogComponent,
+    ProfileComponent,
+    FeedbackPageComponent,
+    ViewFeedbackPageComponent
   ],
   imports: [
     BrowserModule,

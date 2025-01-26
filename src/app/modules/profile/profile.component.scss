@@ -1,0 +1,186 @@
+@import '../../variable.scss';
+
+.booking-container {
+    padding: 20px;
+  
+    .main-heading {
+      font-size: 24px;
+      font-weight: bold;
+      font-family: $font;
+      margin-bottom: 5px;
+    }
+
+    .sub-heading {
+      font-size: 12px;
+      font-weight: 600;
+      font-family: Poppins, sans-serif;
+      margin-bottom: 25px;
+    }
+
+    .expansion-pannel {
+      margin-bottom: 3%;
+    }
+    .expansion-header {
+      height: 5rem;
+      font-size: 20px;
+      font-weight: bold;
+      font-family: $font !important;
+    }
+}
+
+.profile-div {
+    margin-top: 40px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    width: 75%;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.data-line {
+    display: flex;
+    flex-direction: row;
+    font-size: 13px;
+    font-family: $font;
+    margin-bottom: 2%;
+  
+    .left {
+      flex: 1;
+      font-weight: bold;
+    }
+  
+    .right {
+      flex: 2;
+    }
+  
+    .multi-line {
+      display: contents;
+      line-height: 1.25;
+    }
+  }
+  
+  .sub-heading-1 {
+    font-size: 14px;
+    font-weight: 800;
+    font-family: Poppins, sans-serif;
+    margin-bottom: 25px;
+  }
+
+  .submit-button {
+    border-radius: 36px;
+    margin-left: 58%;
+    border: 2px solid #11998e !important;
+    background: #11998e !important;
+    color: white !important;
+    font-family: Poppins, sans-serif;
+    font-weight: 500;
+    width: 20%;
+    margin-top: 2%;
+    height: 36px;
+  }
+  
+  .submit-button:hover {
+    border: 2px solid #11998e !important;
+    background: white !important;
+    color: #11998e !important;
+  }
+
+  .submit-button:disabled {
+    border: 2px solid #d8d8d8 !important;
+    background: #d8d8d8 !important;
+    color: gray !important;
+  }
+
+
+
+
+
+
+
+
+
+
+  .form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas: 
+    "current"
+    "new-password"
+    "confirm"
+    "save-button"
+  }
+
+  .current {
+    grid-area: current;
+    margin: 5% 0% 5% 0%;
+    width: 60%;
+  }
+
+  .new-password {
+    grid-area: new-password;
+    margin: 5%;
+    margin: 5% 0% 5% 0%;
+    width: 60%;
+  }
+
+  .confirm {
+    grid-area: confirm;
+    margin: 5% 0% 5% 0%;
+    width: 60%;
+
+    .invalid-cred {
+        grid-area: invalid-cred;
+        display: flex;
+        font-weight: 400;
+        margin-top: 25px;
+        margin-bottom: 25px;
+      
+        .error-msg {
+          color: red !important;
+        }
+      }
+  }
+
+  .save-button {
+    grid-area: save-button;
+    margin: 5% 0% 5% 0%;
+
+    .submit1-button {
+        border-radius: 36px;
+        margin-left: 32%;
+        border: 2px solid #11998e !important;
+        background: #11998e !important;
+        color: white !important;
+        font-family: Poppins, sans-serif;
+        font-weight: 500;
+        width: 20%;
+        height: 36px;
+      }
+      
+      .submit1-button:hover {
+        border: 2px solid #11998e !important;
+        background: white !important;
+        color: #11998e !important;
+      }
+    
+      .submit1-button:disabled {
+        border: 2px solid #d8d8d8 !important;
+        background: #d8d8d8 !important;
+        color: gray !important;
+      }
+
+  }
+  
+
+  .invalid-password {
+    display: flex;
+    justify-content: center;
+    font-weight: 400;
+    margin-top: 25px;
+    margin-bottom: 25px;
+  
+    .error-msg {
+      color: red !important;
+    }
+  }
+

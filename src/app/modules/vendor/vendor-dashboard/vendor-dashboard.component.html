@@ -45,9 +45,14 @@
         </div>
         <div class="recent-bookings">
             <h1 class="dashboard-sub-heading">Recent Bookings</h1>
-            <div class="content">
+            @if (bookingList.length > 0) {
+              <app-booking-history [ArrayOfbooking]="bookingList"></app-booking-history>
+            } @else {
+              <div class="content">
                 <p>No Recent Bookings</p>
             </div>
+            }
+
         </div>
     </div>
   </div>

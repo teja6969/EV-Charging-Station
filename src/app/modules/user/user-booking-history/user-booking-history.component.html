@@ -1,0 +1,72 @@
+<div class="booking-container">
+  <h1 class="main-heading">Booking History</h1>
+
+  @for (item of bookingData; track $index) {
+  <mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      @if (getBookingStatus(item.sdatet, item.edatet) == 'B') {
+      <div mat-card-avatar class="example-header-image-bc"></div>
+      } @else if (getBookingStatus(item.sdatet, item.edatet) == 'I') {
+      <div mat-card-avatar class="example-header-image-i"></div>
+      } @else {
+      <div mat-card-avatar class="example-header-image-c"></div>
+      }
+
+    </mat-card-header>
+    <mat-card-content>
+      <div class="data-line">
+        <div class="left">Brand : </div>
+        <div class="right">{{item.evbrand}}</div>
+      </div>
+      <div class="data-line">
+        <div class="left">Model : </div>
+        <div class="right">{{item.evmodel}}</div>
+      </div>
+      <div class="data-line">
+        <div class="left">Battery Status : </div>
+        <div class="right">{{item.batterystatus}}</div>
+      </div>
+      <div class="data-line">
+        <div class="left">Payment Type : </div>
+        <div class="right">{{item.paymentType == 'U' ? 'UPI': 'Card'}}</div>
+      </div>
+
+      <div class="data-line">
+        <div class="left">Start Time : </div>
+        <div class="right">{{formatDate(item.sdatet)}}</div>
+      </div>
+
+      <div class="data-line">
+        <div class="left">End Time : </div>
+        <div class="right">{{formatDate(item.edatet)}}</div>
+      </div>
+
+      <div class="data-line">
+        <div class="left">Status : </div>
+        @if(getBookingStatus(item.sdatet, item.edatet) == 'B') {
+        <div class="right">Booking Confirmed</div>
+        }
+        @else if(getBookingStatus(item.sdatet, item.edatet) == 'I') {
+        <div class="right">Inprogress</div>
+        }
+        @else {
+        <div class="right bold">Completed</div>
+        }
+      </div>
+
+      <div class="mt-5">
+        <button mat-raised-button class="directions-button" (click)="openGoogleMaps(item)">
+          Get Directions
+          <mat-icon>directions</mat-icon>
+        </button>
+        <button mat-raised-button class="edit-button" (click)="showFeedback(item)">Feedback</button>
+      </div>
+
+
+
+
+
+    </mat-card-content>
+  </mat-card>
+  }
+</div>

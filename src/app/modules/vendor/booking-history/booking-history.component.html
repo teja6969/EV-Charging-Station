@@ -1,0 +1,50 @@
+<mat-accordion class="example-headers-align">
+    @for (item of ArrayOfbooking; track item;  let i = $index) {
+    <mat-expansion-panel class="expansion-pannel" [ngClass]="{'border-red': i%2 ==0 , 'border-green': i%2 !=0}" hideToggle>
+        <mat-expansion-panel-header class="expansion-header">
+            <mat-panel-title class="sub-heading">Booking Id &nbsp; {{item.rid}}</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <div class="data-line">
+            <div class="left">Brand : </div>
+            <div class="right">{{item.evbrand}}</div>
+          </div>
+          <div class="data-line">
+            <div class="left">Model : </div>
+            <div class="right">{{item.evmodel}}</div>
+          </div>
+          <div class="data-line">
+            <div class="left">Battery Status : </div>
+            <div class="right">{{item.batterystatus}}</div>
+          </div>
+          <div class="data-line">
+            <div class="left">Payment Type : </div>
+            <div class="right">{{item.paymentType == 'U' ? 'UPI': 'Card'}}</div>
+          </div>
+    
+          <div class="data-line">
+            <div class="left">Start Time : </div>
+            <div class="right">{{formatDate(item.sdatet)}}</div>
+          </div>
+    
+          <div class="data-line">
+            <div class="left">End Time : </div>
+            <div class="right">{{formatDate(item.edatet)}}</div>
+          </div>
+    
+          <div class="data-line">
+            <div class="left">Status : </div>
+            @if(getBookingStatus(item.sdatet, item.edatet) == 'B') {
+            <div class="right">Booking Confirmed</div>
+            }
+            @else if(getBookingStatus(item.sdatet, item.edatet) == 'I') {
+            <div class="right">Inprogress</div>
+            }
+            @else {
+            <div class="right bold">Completed</div>
+            }
+          </div>
+    
+    </mat-expansion-panel>
+    }
+</mat-accordion>        

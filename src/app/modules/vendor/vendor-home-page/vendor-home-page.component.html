@@ -25,10 +25,10 @@
           <mat-icon>view_list</mat-icon>
           <span>View Stations</span>
       </button>
-      <button mat-button class="menu-button" (click)="pageChange('Help')">
-          <mat-icon>help</mat-icon>
-          <span>Help</span>
-      </button>
+      <button mat-button class="menu-button" (click)="pageChange('feedback')">
+        <mat-icon>view_list</mat-icon>
+        <span>View Feedback</span>
+    </button>
 
       <mat-divider></mat-divider>
 
@@ -48,8 +48,9 @@
         @if(showStations) {
           <app-vendor-view-charging-stations></app-vendor-view-charging-stations>
         }
-
-        @if(showHelp) {}
+        @if(showFeedback) {
+          <app-view-feedback-page></app-view-feedback-page>
+        }
 
         @if(showConfirmationPage) {
           <app-confirmation-page></app-confirmation-page>

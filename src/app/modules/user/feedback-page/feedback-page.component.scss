@@ -1,0 +1,68 @@
+@import '../../../variable.scss';
+
+::ng-deep .mat-mdc-dialog-container .mdc-dialog__container {
+    min-width: 65rem;
+    position: relative;
+    height: 43vh;
+    left: 0%;
+  }
+
+  .form-container {
+    padding: 20px;
+    background-color: #f9f9f9;
+    height: 100vh;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+  }
+
+  .booking-form-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-template-areas:
+      "feedback"
+      "rating"
+      "submit";
+  }
+
+  .feedback {
+    grid-area: feedback;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 100%;
+  }
+
+  .rating {
+    grid-area: rating;
+    display: grid;
+    margin: 1.5% 0% 1.5% 0%;
+    width: 100%;
+  }
+  
+  .main-heading {
+      font-size: 24px;
+      font-weight: bold;
+      font-family: $font;
+      margin-bottom: 20px;
+    }
+
+    .submit {
+        grid-area: submit;
+        display: grid;
+        margin: 1.5% 0% 1.5% 40%;
+        width: 15%;
+    
+        .submit-button {
+          border-radius: 36px;
+          border: 2px solid #11998e !important;
+          background: white !important;
+          color: #11998e !important;
+          font-family: $font;
+          font-weight: 500;
+        }
+    
+        .submit-button:hover {
+          border: 2px solid #11998e !important;
+          background: #11998e !important;
+          color: white !important;
+        }
+    }

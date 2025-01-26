@@ -70,6 +70,11 @@
     width: 55%;
   }
 
+  .percent {
+    position: relative;
+    right: 100%;
+  }
+
   .card-num {
     grid-area: card-num;
     display: grid;

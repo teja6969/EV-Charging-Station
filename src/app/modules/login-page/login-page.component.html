@@ -7,9 +7,9 @@
     <div class="side-image"></div>
     <img class="login-image" src="assets/car.png" alt="Login Image">
   </div>
-
-  <div class="login-form-wrapper">
-    @if (!showUserLogin && !showvendorLogin && !showCreateNew) {
+  @if(!showLoader) {
+    <div class="login-form-wrapper">
+      @if (!showUserLogin && !showvendorLogin && !showCreateNew) {
       <div class="title-container">
         <span>Select Credential Type</span>
       </div>
@@ -17,14 +17,14 @@
         <button mat-raised-button class="user-button" (click)="showLoginType('user')">User</button>
         <button mat-raised-button class="ev-button" (click)="showLoginType('vendor')">EV Vendor</button>
       </div>
-
+  
       <div class="create-new-link">
         <span class="vendor">Don't Have account ? </span> &nbsp;
         <span class="user" (click)="showLoginType('new')">Sign Up</span>
-       </div>
-    }
-
-    @if (showUserLogin && !showvendorLogin && !showCreateNew) {
+      </div>
+      }
+  
+      @if (showUserLogin && !showvendorLogin && !showCreateNew) {
       <div class="title-container">
         <span>Enter User Details</span>
       </div>
@@ -39,30 +39,32 @@
           <div class="password">
             <mat-form-field style="width: 85%; height: 36px;">
               <mat-label>Password</mat-label>
-              <input matInput [type]="hide() ? 'password' : 'text'" placeholder="Enter User Password" formControlName="password" />
-              <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+              <input matInput [type]="hide() ? 'password' : 'text'" placeholder="Enter User Password"
+                formControlName="password" />
+              <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide()">
                 <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
             </mat-form-field>
           </div>
           @if (invalidCredentials) {
-            <div class="invalid-cred">
-              <mat-error class="error-msg">Invalid Credentials</mat-error>
-            </div>
+          <div class="invalid-cred">
+            <mat-error class="error-msg">Invalid Credentials</mat-error>
+          </div>
           }
-
+  
           <div class="login-buttons">
             <button mat-raised-button class="user-login" color="primary" (click)="login()">Login</button>
           </div>
-
+  
           <div class="vendor-link">
-           <span class="vendor" (click)="showLoginType('vendor')">Want to login as Vendor ?</span>
+            <span class="vendor" (click)="showLoginType('vendor')">Want to login as Vendor ?</span>
           </div>
         </form>
       </div>
-    }
-
-    @if (!showUserLogin && showvendorLogin && !showCreateNew) {
+      }
+  
+      @if (!showUserLogin && showvendorLogin && !showCreateNew) {
       <div class="title-container">
         <span>Enter Vendor Details</span>
       </div>
@@ -77,51 +79,53 @@
           <div class="password">
             <mat-form-field style="width: 85%; height: 36px;">
               <mat-label>Password</mat-label>
-              <input matInput [type]="hide() ? 'password' : 'text'" placeholder="Enter Vendor Password" formControlName="password" />
-              <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+              <input matInput [type]="hide() ? 'password' : 'text'" placeholder="Enter Vendor Password"
+                formControlName="password" />
+              <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide()">
                 <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
             </mat-form-field>
           </div>
-
+  
           @if (invalidCredentials) {
-            <div class="invalid-cred">
-              <mat-error class="error-msg">Invalid Credentials</mat-error>
-            </div>
+          <div class="invalid-cred">
+            <mat-error class="error-msg">Invalid Credentials</mat-error>
+          </div>
           }
-
+  
           <div class="login-buttons">
             <button mat-raised-button class="vendor-login" color="primary" (click)="login()">Login</button>
           </div>
-
+  
           <div class="user-link">
-           <span class="vendor" (click)="showLoginType('user')">Want to login as User ?</span>
+            <span class="vendor" (click)="showLoginType('user')">Want to login as User ?</span>
           </div>
         </form>
       </div>
-    }
-
-    @if (showCreateNew && !showUserLogin && !showvendorLogin) {
+      }
+  
+      @if (showCreateNew && !showUserLogin && !showvendorLogin) {
       @if (successAlert) {
-        <div class="alert-container">
-          <div class="alert-success alert">
-            <span class="icon"><mat-icon>check_circle_outline</mat-icon></span>
-            <span class="message">{{ successMsg }}</span>
-            <span class="close" (click)="successAlert = false "><mat-icon>close</mat-icon></span>
-          </div>
+      <div class="alert-container">
+        <div class="alert-success alert">
+          <span class="icon"><mat-icon>check_circle_outline</mat-icon></span>
+          <span class="message">{{ successMsg }}</span>
+          <span class="close" (click)="successAlert = false "><mat-icon>close</mat-icon></span>
         </div>
+      </div>
       }
-
+  
       @if (failureAlert) {
-        <div class="alert-container">
-          <div class="alert-error alert">
-            <span class="icon"><mat-icon>error_outline</mat-icon></span>
-            <span class="message">{{ failureMsg }}</span>
-            <span class="close" (click)="failureAlert = false"><mat-icon>close</mat-icon></span>
-          </div>
+      <div class="alert-container">
+        <div class="alert-error alert">
+          <span class="icon"><mat-icon>error_outline</mat-icon></span>
+          <span class="message">{{ failureMsg }}</span>
+          <span class="close" (click)="failureAlert = false"><mat-icon>close</mat-icon></span>
         </div>
+      </div>
       }
-
+  
       <div class="title-container">
         <span>Create New account</span>
       </div>
@@ -136,27 +140,37 @@
           <div class="password">
             <mat-form-field style="width: 85%; height: 36px;">
               <mat-label>Password</mat-label>
-              <input matInput [type]="hide() ? 'password' : 'text'" placeholder="Enter Password" formControlName="password" />
-              <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide()">
+              <input matInput [type]="hide() ? 'password' : 'text'" placeholder="Enter Password"
+                formControlName="password" />
+              <button mat-icon-button matSuffix (click)="clickEvent($event)" [attr.aria-label]="'Hide password'"
+                [attr.aria-pressed]="hide()">
                 <mat-icon>{{hide() ? 'visibility_off' : 'visibility'}}</mat-icon>
               </button>
             </mat-form-field>
           </div>
-
+  
+          @if(registerationForm.get('password')?.errors?.['minlength']) {
+          <mat-error class="error-msg">Password must be at least 6 characters</mat-error>
+          }
+  
           <div class="email">
             <mat-form-field style="width: 85%; height: 36px;">
               <mat-label>Email</mat-label>
               <input matInput type="text" placeholder="abc@gmail.com" formControlName="email">
             </mat-form-field>
           </div>
-
+          @if(registerationForm.get('email')?.errors?.['email']) {
+          <mat-error class="error-msg">Enter Valid Email</mat-error>
+          }
+  
           <div class="phone">
             <mat-form-field style="width: 85%; height: 36px;">
               <mat-label>Phone Number</mat-label>
-              <input matInput type="number" placeholder="9123456789" maxlength="10" formControlName="phone">
+              <input matInput type="text" placeholder="9123456789" maxlength="10" formControlName="phone"
+                (input)="numberOnly($event)">
             </mat-form-field>
           </div>
-
+  
           <div class="role">
             <mat-form-field style="width: 85%; height: 36px;">
               <mat-label>Whom you are ?</mat-label>
@@ -166,24 +180,35 @@
               </mat-select>
             </mat-form-field>
           </div>
-
-
-<!-- 
-          @if (invalidCredentials) {
-            <div class="invalid-cred">
-              <mat-error class="error-msg">Invalid Credentials</mat-error>
-            </div>
-          } -->
-
+  
+  
+          <!-- 
+            @if (invalidCredentials) {
+              <div class="invalid-cred">
+                <mat-error class="error-msg">Invalid Credentials</mat-error>
+              </div>
+            } -->
+  
           <div class="login-buttons">
-            <button mat-raised-button class="vendor-login" color="primary" [disabled]="!registerationForm.valid" (click)="register()">Register</button>
+            <button mat-raised-button class="vendor-login" color="primary" [disabled]="!registerationForm.valid"
+              (click)="register()">Register</button>
           </div>
-
+  
           <div class="user-link">
-           <span class="vendor" (click)="showLoginType('user')">Login</span>
+            <span class="vendor" (click)="showLoginType('user')">Login</span>
           </div>
         </form>
       </div>
-    }
+      }
+    </div>
+  }
+
+  @if(showLoader) {
+    <div class="spinner">
+      <mat-spinner></mat-spinner>
+      <span class="text">{{loaderText}}</span>
   </div>
-</div> 
+  }
+
+
+</div>

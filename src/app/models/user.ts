@@ -67,11 +67,13 @@ export class reservation {
     evmodel!: string;
     stationID!: number;
     vendorid!: string;
-    batteryStatus!: number;
+    userId!: string;
+    batterystatus!: number;
+    batteryCapacity!: number;
     sdatet!: string;
     edatet!: string;
     slotType!: string;
     paymentType!: string;
+    rid!: string;
     status!: string;
-
 }

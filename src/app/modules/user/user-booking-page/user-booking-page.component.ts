@@ -17,6 +17,9 @@ export class UserBookingPageComponent implements OnInit {
   searchForm!: FormGroup;
   stationDetails: Array<EditVendorStation> = [];
 
+  latitude !: number;
+  logitude !: number;
+
   @Output() showConfirmation: EventEmitter<string> = new EventEmitter();
 
   constructor(private fb: FormBuilder, private sharedService: SharedService, private dialog: MatDialog) { }
@@ -100,6 +103,17 @@ export class UserBookingPageComponent implements OnInit {
         this.showConfirmation.emit('show');
       }
     })
+  }
+
+  openGoogleMaps(details : EditVendorStation) {
+    this.latitude = details.latitude;
+    this.logitude = details.longitude;
+    if (this.latitude && this.logitude) {
+      const googleMapsUrl = `https://www.google.com/maps?q=${this.latitude},${this.logitude}`;
+      window.open(googleMapsUrl, '_blank');  // Opens in a new tab
+    } else {
+      alert('Location coordinates are not available yet.');
+    }
   }
 
 }

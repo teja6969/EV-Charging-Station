@@ -79,3 +79,12 @@ export class SlotType {
 export class RetriveVendor {
     vendorid!: string;
 }
+
+export class FeedBackModel {
+    feedbacktext!: string;
+    rating!: string;
+    userId!: string;
+    stationID!: number;
+    createdAt!: string;
+    rid!: string;
+}
