@@ -14,6 +14,8 @@ import { FeedbackPageComponent } from '../feedback-page/feedback-page.component'
 export class UserBookingHistoryComponent implements OnInit {
 
   bookingData: reservation[] = [];
+  loading = false;
+  loaderText = '';
 
   constructor(public sharedService : SharedService, private dialog: MatDialog) {
 
@@ -27,6 +29,7 @@ export class UserBookingHistoryComponent implements OnInit {
     this.sharedService.userBookingHistory(this.sharedService.loggedInUser.userId).subscribe({
       next: (data: Array<reservation>)  => {
         this.bookingData = data;
+        this.bookingData.sort((a: any, b: any) => b.rid - a.rid);
       }, error: (error: HttpErrorResponse) => {
         console.error(error)
       }
@@ -48,17 +51,19 @@ export class UserBookingHistoryComponent implements OnInit {
     return `${day}-${month}-${year} ${hours}:${minutes} ${amPm}`;
   }
 
-  getBookingStatus(startDateTime: string, endDateTime: string): string {
+  getBookingStatus(startDateTime: string, endDateTime: string, status: string): string {
     const sysDateTime = new Date();
     const start = new Date(startDateTime);
     const end = new Date(endDateTime);
-  
-    if (sysDateTime < start) {
+    
+    if(status == 'C') {
+      return 'C';
+    } else if (sysDateTime < start) {
       return 'B';
     } else if (sysDateTime >= start && sysDateTime < end) {
       return 'I';
     } else {
-      return 'C';
+      return 'S';
     }
   }
 
@@ -80,6 +85,25 @@ export class UserBookingHistoryComponent implements OnInit {
         const dialogRef = this.dialog.open(FeedbackPageComponent, {
           data: { leadData: details }
         });
+  }
+
+
+  cancelBooking(details: reservation) {
+    this.loading = true;
+    this.loaderText = 'Cancelling... Amount will be credited to your original payment method';
+    this.sharedService.cancelBookig(details.rid, 'C').subscribe({
+      next: (data: any) => {
+        setTimeout(() => {
+          this.retriveData();
+          this.loading = false;
+          console.log(data);
+        }, 2000);
+      }, error: (error: HttpErrorResponse) => {
+        console.error(error);
+        this.loading = false;
+        this.retriveData();
+      }
+    })
   }
 
 

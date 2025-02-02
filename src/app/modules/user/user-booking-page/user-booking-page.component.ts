@@ -91,7 +91,10 @@ export class UserBookingPageComponent implements OnInit {
 
   bookSlot(details: EditVendorStation): void {
     const dialogRef = this.dialog.open(BookingDialogComponent, {
-      data: { leadData: details }
+      width: '65rem',
+      height: '80vh',
+      data: { leadData: details },
+      panelClass: 'custom-modalbox',
     });
 
     dialogRef.afterClosed().subscribe(result => {

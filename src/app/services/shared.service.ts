@@ -84,4 +84,11 @@ export class SharedService {
     return this.http.post<any>(endpoints.vendorbookinghistory, {vendorid: id}, this.httpOptions);
   }
 
+  cancelBookig(id: string, stat: string) {
+    return this.http.post<any>(endpoints.cancelBooking, {rid: id, status: stat}, this.httpOptions);
+  }
+
+  checkSlots(id: number) {
+    return this.http.post<any>(endpoints.checkSlot, {stationid: id}, this.httpOptions);
+  }
 }

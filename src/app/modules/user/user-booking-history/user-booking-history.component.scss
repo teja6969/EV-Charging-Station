@@ -60,6 +60,22 @@
     left: 90%;
   }
 
+  .example-header-image-cancelled {
+    background-image: url("/assets/cancel.png");
+    background-color: white;
+    background-size: cover;
+    position: absolute;
+    left: 90%;
+  }
+
+  .spinner {
+    display: flex;
+    flex-direction: column;
+    margin-top: 20%;
+    align-items: center;
+    gap: 30px;
+  }
+
   .data-line {
     display: flex;
     flex-direction: row;
@@ -127,11 +143,21 @@
     color: white !important;
   }
 
+  .edit-button:disabled {
+    border: 2px solid #11998e !important;
+    background: #11998e !important;
+    color: white !important;
+    opacity: 0.3 !important;
+  }
+
   .mt-5 {
     margin-top: 3%;
     margin-bottom: 3%;
   }
 
+  ::ng-deep .mat-mdc-progress-spinner .mdc-circular-progress__indeterminate-circle-graphic {
+    stroke: #11998e !important;
+  }
 
 
 

@@ -129,7 +129,13 @@ export class BookingDialogComponent implements OnInit {
     const [hours, minutes] = time.split(':').map(Number);
     const hours24 = period.toLowerCase() === 'pm' && hours !== 12 ? hours + 12 : hours === 12 && period.toLowerCase() === 'am' ? 0 : hours;
     date.setHours(hours24, minutes, 0, 0);
-    return date.toISOString().slice(0, 19);
+    const year = date.getFullYear();
+    const month = String(date.getMonth() + 1).padStart(2, '0');
+    const day = String(date.getDate()).padStart(2, '0');
+    const hour = String(date.getHours()).padStart(2, '0');
+    const minute = String(date.getMinutes()).padStart(2, '0');
+    const second = String(date.getSeconds()).padStart(2, '0');
+    return `${year}-${month}-${day}T${hour}:${minute}:${second}`;
   }
 
   bookSlot() {
@@ -147,7 +153,7 @@ export class BookingDialogComponent implements OnInit {
     body.sdatet = this.formatDateTime(this.userBookingForm.controls['startDate'].value , this.userBookingForm.controls['startTime'].value);
     body.edatet = this.formatDateTime(this.userBookingForm.controls['startDate'].value , this.userBookingForm.controls['endTime'].value);
     body.paymentType = this.paymentForm.controls['paymentType'].value;
-    body.status = 'C';
+    body.status = 'S';
 
     this.sharedService.bookSlot(body).subscribe({
       next: (data) => {

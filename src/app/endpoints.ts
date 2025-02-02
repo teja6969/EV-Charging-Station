@@ -17,5 +17,6 @@ export const endpoints = {
     feedback: `${gatewayBaseUrl}api/auth/feedback`,
     getfeedback: `${gatewayBaseUrl}api/auth/retrivefeedback`,
     vendorbookinghistory: `${gatewayBaseUrl}api/auth/vendorbookinghistory`,
-    
+    cancelBooking: `${gatewayBaseUrl}api/auth/bookingstatusupdate`,
+    checkSlot: `${gatewayBaseUrl}api/auth/slotstatus`,
 }
