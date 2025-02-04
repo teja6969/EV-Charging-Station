@@ -42,6 +42,8 @@ export const ADAPTER_TYPES =
     [
         '3 PIN',
         'CHAdeMO',
+        'LECCS',
+        'CCS',
         'Combo 2',
         'Type 1',
         'Type 2(AC)',
